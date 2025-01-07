@@ -24,7 +24,7 @@ let handler = async (m, { conn, text, usedPrefix, command, isOwner }) => {
             conn.sendFile(m.chat, stiker, 'sticker.webp', '', m);
         }
     } catch (e) {
-        throw e;
+        throw eror;
     }
 };
 
