@@ -1192,8 +1192,8 @@ module.exports = {
                             contextInfo: {
 			    mentionedJid: [user],
                             externalAdReply: {  
-                            title: global.wm,
-                            body: '',
+                            title: action === 'add' ? 'Selamat Datang' : 'Selamat tinggal',
+                            body: global.wm,
                             thumbnailUrl: pp,
                             sourceUrl: 'https://api.botcahx.eu.org',
                             mediaType: 1,
