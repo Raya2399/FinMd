@@ -48,7 +48,7 @@ let handler = async (m, { conn, text, usedPrefix }) => {
                             previewType: 0,
                             renderLargerThumbnail: true,
                             thumbnailUrl: convert.image,
-                            sourceUrl: audioUrl.result.mp3
+                            sourceUrl: convert.url
                         }
                     },
                     mentions: [m.sender]
@@ -65,7 +65,7 @@ let handler = async (m, { conn, text, usedPrefix }) => {
                         title: convert.title,
                         body: "",
                         thumbnailUrl: convert.image,
-                        sourceUrl: audioUrl.result.mp3,
+                        sourceUrl: convert.url,
                         mediaType: 1,
                         showAdAttribution: true,
                         renderLargerThumbnail: true
