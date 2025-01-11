@@ -17,7 +17,7 @@ let handler = async (m, {
       let old = new Date();
       let res = await fetch(`https://api.botcahx.eu.org/api/search/agedetect?url=${out}&apikey=${btc}`);
       let convert = await res.json();   
-      let txt = `*乂 A G E   D E T E C T I O N:*\n\n`;
+      let txt = `*乂 A G E   D E T E C T I O N*\n\n`;
         txt += `◦ *Score:* ${convert.result.score} \n`;
         txt += `◦ *Age:* ${convert.result.age} \n`;
         txt += `◦ *Gender:* ${convert.result.gender} \n`;
