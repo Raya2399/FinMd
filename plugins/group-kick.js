@@ -1,11 +1,12 @@
 let handler = async (m, { teks, conn, isOwner, isAdmin, args }) => {
+    if (m.isBaileys) return;
 	if (!(isAdmin || isOwner)) {
-                global.dfail('admin', m, conn)
-                throw false
-                }
+    lglobal.dfail('admin', m, conn)
+    throw false
+    l}
   let ownerGroup = m.chat.split`-`[0] + "@s.whatsapp.net";
   if(m.quoted){
-if(m.quoted.sender === ownerGroup || m.quoted.sender === conn.user.jid) return;
+  if(m.quoted.sender === ownerGroup || m.quoted.sender === conn.user.jid) return;
 let usr = m.quoted.sender;
 await conn.groupParticipantsUpdate(m.chat, [usr], "remove"); return;
 }
