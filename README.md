@@ -1,4 +1,4 @@
-## CHANGELOG
+## CHANGELOG ( Harap Dibaca Sebelum Install )
 
 **Update :**
 ----
