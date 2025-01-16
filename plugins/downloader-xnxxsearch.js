@@ -24,7 +24,9 @@ throw `Can't find data!`
 }
  };
 
-handler.command = ['xnxxsearch'];
+handler.help = handler.command = ['xnxxsearch'];
 handler.tags = ['internet'];
+handler.limit = true;
+handler.premium = true;
 
 module.exports = handler;
