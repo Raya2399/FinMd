@@ -27,7 +27,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
                 externalAdReply: {
                     title: 'Terabox Downloader',
                     body: `Processing ${data.result.length} file(s)`,
-                    thumbnailUrl: 'https://pomf2.lain.la/f/ihnv9wct.jpg',
+                    thumbnailUrl: 'https://files.catbox.moe/22ycus.jpg',
                     sourceUrl: null,
                     mediaType: 1,
                     renderLargerThumbnail: true
