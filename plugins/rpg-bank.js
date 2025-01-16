@@ -31,8 +31,8 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
                         mediaType: 1,
                         previewType: 0,
                         renderLargerThumbnail: true,
-                        thumbnailUrl: 'https://pomf2.lain.la/f/106ebnd3.jpg',
-                        sourceUrl: 'https://whatsapp.com/channel/0029Va8ZH8fFXUuc69TGVw1q'
+                        thumbnailUrl: 'https://files.catbox.moe/s7y8c4.jpg',
+                        sourceUrl: ''
                     }
                 }, 
                 mentions: [m.sender]
