@@ -1,3 +1,5 @@
+/** INI SPAM JIR😂
+
 const { color } = require('../lib/color')
 const moment = require("moment-timezone")
 let levelling = require('../lib/levelling')
@@ -17,3 +19,5 @@ Use *.profile* to check`.trim()
 		}
 	}
 }
+
+**/
