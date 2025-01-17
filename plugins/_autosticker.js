@@ -48,32 +48,9 @@ handler.all = async function(m, { isAdmin, isBotAdmin }) {
                 await this.reply(m.chat, 'Gagal membuat stiker dari video', m);
                 return;
             }
-        } else if (m.text.split(/\n| /i)[0]) {
-            if (isUrl(m.text)) {
-                try {
-                    stiker = await sticker5(false, m.text.split(/\n| /i)[0], global.packname, global.author);
-                } catch (e) {
-                    console.error('Error processing URL:', e);
-                    await this.reply(m.chat, 'Gagal membuat stiker dari URL', m);
-                    return;
-                }
-            } else return;
-        }
-
-        if (stiker) {
-            try {
-                await this.sendFile(m.chat, stiker, 'sticker.webp', '', m);
-            } catch (e) {
-                console.error('Error sending sticker:', e);
-                await this.reply(m.chat, 'Gagal mengirim stiker', m);
-            }
         }
     }
     return !0;
 }
 
 module.exports = handler;
-
-const isUrl = (text) => {
-    return text.match(new RegExp(/^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)(jpe?g|gif|png|mp4)/, 'gi'));
-}
