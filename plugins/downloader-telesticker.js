@@ -1,6 +1,6 @@
 const fetch = require("node-fetch");
 
-const handler = async (m, { conn, text, usedPrefix, command }) => {
+let handler = async (m, { conn, text, usedPrefix, command }) => {
     if (!text) throw `🚩 *Example:* ${usedPrefix + command} https://t.me/addstickers/fuwayonimaa_by_fStikBot`;
     if (!text.match(/(https:\/\/t.me\/addstickers\/)/gi)) throw `🚩 *Example:* ${usedPrefix + command} https://t.me/addstickers/fuwayonimaa_by_fStikBot`;
     m.reply(wait)
@@ -24,6 +24,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
 handler.help = ['telesticker'];
 handler.command = /^(telesticker|stele)$/i;
 handler.tags = ['sticker'];
+handler.premium = true;
 handler.limit = true;
 
 module.exports = handler;
