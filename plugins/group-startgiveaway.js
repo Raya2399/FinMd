@@ -4,7 +4,7 @@ let handler = async (m, { usedPrefix, text, command, participants  }) => {
     let q = m.quoted ? m.quoted : m
 	let mime = (q.msg || q).mimetype || q.mediaType || ''
 	text = text ? text : m.quoted && m.quoted.text ? m.quoted.text : m.quoted && m.quoted.caption ? m.quoted.caption : m.quoted && m.quoted.description ? m.quoted.description : ''
-	if (!text) throw `Example : ${usedPrefix + command} GIVEAWAY BOKEP 500TB`
+	if (!text) throw `Example : ${usedPrefix + command} GIVEAWAY AKUN PREMIUM`
     if (id in conn.giveway) {
         throw `_*Masih ada GIVEAWAY di chat ini!*_`
     }
