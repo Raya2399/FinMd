@@ -1,4 +1,4 @@
-/*const uploadImage = require('../lib/uploadImage');
+const uploadImage = require('../lib/uploadImage');
 const fetch = require("node-fetch");
 let handler = async (m, { 
 conn, 
@@ -31,4 +31,3 @@ handler.tags = ['maker'];
 handler.premium = false;
 handler.limit = true;
 module.exports = handler;
-*/
