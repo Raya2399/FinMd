@@ -4,6 +4,10 @@ const util = require('util')
 const isNumber = x => typeof x === 'number' && !isNaN(x)
 const delay = ms => isNumber(ms) && new Promise(resolve => setTimeout(resolve, ms))
 
+const BotDetector = require("./lib/botdetector.js");
+const maxBotDelay = 3;
+let botDetect = new BotDetector(maxBotDelay);
+
 module.exports = {
     async handler(chatUpdate) {
         if (global.db.data == null) await loadDatabase()
@@ -925,8 +929,19 @@ module.exports = {
                     console.error(e)
                 }
             }
-        //if (m.id.startsWith('BAE5') && m.id.length === 16 || m.isBaileys && m.fromMe) return
-	if (m.id.startsWith('3EB0') || (m.id.startsWith('BAE5') && m.id.length === 16 || m.isBaileys && m.fromMe)) return;	
+
+            const senderUser = m.sender.split('@')[0];
+            const messageID = m.id;
+            const quotedID = m.quoted ? m.quoted.id : null;
+            const participant = m.quoted ? m.quoted.sender : null;
+            const messageTimestamp = m.messageTimestamp.low;
+
+            const senderIsBot = botDetect.isBot(senderUser, messageID, quotedID, participant, messageTimestamp);
+            if (senderIsBot || (m.isBaileys && m.fromMe)) return;
+            // if (m.id.startsWith('BAE5') && m.id.length === 16 || m.isBaileys && m.fromMe) return
+      	    // if (m.id.startsWith('3EB0') || (m.id.startsWith('BAE5') && m.id.length === 16 || m.isBaileys && m.fromMe)) return;	
+                  
+
             m.exp += Math.ceil(Math.random() * 10)
 
             let usedPrefix
