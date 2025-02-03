@@ -15,7 +15,7 @@ try {
 }
 }
 handler.command = handler.help = ['bard','bardai','gemini'];
-handler.tags = ['tools'];
+handler.tags = ['ai'];
 handler.premium = false
 handler.limit = true;
 module.exports = handler;

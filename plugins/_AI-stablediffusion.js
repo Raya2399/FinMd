@@ -13,7 +13,7 @@ let handler = async (m, { text, conn, usedPrefix, command }) => {
   conn.sendFile(m.chat, saveFilename, null, `*Result For:* _${prompt}_`, m);
 };
 handler.command = handler.help = ['diffusion', 'stablediffusion', 'diff'];
-handler.tags = ['tools'];
+handler.tags = ['ai'];
 handler.limit = true;
 handler.private = false;
 handler.group = false;

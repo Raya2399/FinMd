@@ -68,7 +68,7 @@ handler.before = async (m, { conn }) => {
 };
 
 handler.command = ['autoai'];
-handler.tags = ['main'];
+handler.tags = ['ai'];
 handler.help = ['autoai'].map(a => a + ' *enable/disable*');
 handler.limit = true
 

@@ -35,7 +35,7 @@ let handler = async (m, {
 };
 
 handler.help = handler.command = ['age', 'agedetect', 'agedetector'];
-handler.tags = ['tools'];
+handler.tags = ['ai'];
 handler.premium = false;
 handler.limit = true;
 

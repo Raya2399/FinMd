@@ -15,7 +15,7 @@ try {
 }
 }
 handler.command = handler.help = ['blackbox','blackboxai','aicoding'];
-handler.tags = ['tools'];
+handler.tags = ['ai'];
 handler.limit = true
 
 module.exports = handler;
