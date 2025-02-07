@@ -12,7 +12,7 @@ global.eror = '_*Server Error*_'
 global.stiker_wait = '*⫹⫺ Stiker sedang dibuat...*'
 global.packname = 'Made With'
 global.author = 'Bot WhatsApp'
-global.maxwarn = '3' // Peringatan maksimum Warn
+global.maxwarn = '5' // Peringatan maksimum Warn
 
 global.autobio = false // Set true/false untuk mengaktifkan atau mematikan autobio (default: false)
 global.antiporn = true // Set true/false untuk Auto delete pesan porno (bot harus admin) (default: true)
@@ -20,23 +20,26 @@ global.spam = true // Set true/false untuk anti spam (default: true)
 global.gcspam = false // Set true/false untuk menutup grup ketika spam (default: false)
     
 
-
-//INI WAJIB DI ISI!//
+// APIKEY INI WAJIB DI ISI! //
 global.btc = 'YOUR_APIKEY_HERE' 
 //Daftar terlebih dahulu https://api.botcahx.eu.org
 
-//INI OPTIONAL BOLEH DI ISI BOLEH JUGA ENGGA//
+
+
+// INI HANYA OPTIONAL SAJA BOLEH DI ISI BOLEH JUGA ENGGA //
 global.lann = 'YOUR_APIKEY_HERE'
 //Daftar https://api.betabotz.eu.org 
 
-//Gausah diganti
+//Gausah diganti atau di ubah
 global.APIs = {   
   btc: 'https://api.botcahx.eu.org'
 }
 
+//Gausah diganti atau di ubah
 global.APIKeys = { 
   'https://api.botcahx.eu.org': global.btc
 }
+
 
 let fs = require('fs')
 let chalk = require('chalk')
