@@ -1,6 +1,7 @@
 const fetch = require('node-fetch');
 
 let handler = async (m, { conn, command }) => {
+    try { 
     let anu = `─────〔 *${command}* 〕─────\n`;
 
     if (command === 'bucin') {
@@ -36,13 +37,25 @@ let handler = async (m, { conn, command }) => {
     } else if (command === 'batak') {
         const res = await (await fetch(`https://api.botcahx.eu.org/api/random/batak?apikey=${btc}`)).json();
         anu += res.hasl;
-    }
+    } else if (command === 'aceh') {
+        const res = await (await fetch(`https://api.botcahx.eu.org/api/random/aceh?apikey=${btc}`)).json();
+        anu += res.hasl;
+    } else if (command === 'china') {
+        const res = await (await fetch(`https://api.botcahx.eu.org/api/random/china?apikey=${btc}`)).json();
+        anu += res.hasl;
+    } else if (command === 'minangkabau') {
+        const res = await (await fetch(`https://api.botcahx.eu.org/api/random/minangkabau?apikey=${btc}`)).json();
+        anu += res.hasl;
+    }    
     m.reply(anu);
+   } catch (e) {
+    throw eror
+   }
 };
 
-handler.help = ['bucin', 'katailham', 'katadilan', 'fiersa', 'fakta', 'nyindir', 'ngawur', 'jawa', 'quotes','sunda','batak'];
+handler.help = ['bucin', 'katailham', 'katadilan', 'fiersa', 'fakta', 'nyindir', 'ngawur', 'jawa', 'quotes','sunda','batak','aceh','china','minangkabau'];
 handler.tags = ['quotes'];
-handler.command = /^(bucin|katailham|katadilan|fiersa|fakta|nyindir|ngawur|jawa|quotes|sunda|batak)$/i;
+handler.command = /^(bucin|katailham|katadilan|fiersa|fakta|nyindir|ngawur|jawa|quotes|sunda|batak|aceh|china|minangkabau)$/i;
 handler.owner = false;
 handler.mods = false;
 handler.premium = false;
