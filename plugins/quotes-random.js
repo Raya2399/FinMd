@@ -40,7 +40,7 @@ let handler = async (m, { conn, command }) => {
     } else if (command === 'aceh') {
         const res = await (await fetch(`https://api.botcahx.eu.org/api/random/aceh?apikey=${btc}`)).json();
         anu += res.hasl;
-    } else if (command === 'china') {
+    } else if (command === 'cina') {
         const res = await (await fetch(`https://api.botcahx.eu.org/api/random/china?apikey=${btc}`)).json();
         anu += res.hasl;
     } else if (command === 'minangkabau') {
@@ -53,9 +53,9 @@ let handler = async (m, { conn, command }) => {
    }
 };
 
-handler.help = ['bucin', 'katailham', 'katadilan', 'fiersa', 'fakta', 'nyindir', 'ngawur', 'jawa', 'quotes','sunda','batak','aceh','china','minangkabau'];
+handler.help = ['bucin', 'katailham', 'katadilan', 'fiersa', 'fakta', 'nyindir', 'ngawur', 'jawa', 'quotes','sunda','batak','aceh','cina','minangkabau'];
 handler.tags = ['quotes'];
-handler.command = /^(bucin|katailham|katadilan|fiersa|fakta|nyindir|ngawur|jawa|quotes|sunda|batak|aceh|china|minangkabau)$/i;
+handler.command = /^(bucin|katailham|katadilan|fiersa|fakta|nyindir|ngawur|jawa|quotes|sunda|batak|aceh|cina|minangkabau)$/i;
 handler.owner = false;
 handler.mods = false;
 handler.premium = false;
