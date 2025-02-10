@@ -85,6 +85,7 @@ pp.push(b.id)
 handler.help = commandList;
 handler.tags = ["owner"];
 handler.rowner = true;
+handler.group = true;
 handler.command = new RegExp(`^(${commandList.join("|")})$`, "i");
 
 module.exports = handler;
