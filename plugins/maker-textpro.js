@@ -34,7 +34,7 @@ let handler = async (m, { conn, command, text, usedPrefix }) => {
       await conn.sendFile(m.chat, res, 'textpro.jpeg', '', m);
     }
      if (command == 'neongalaxy') {
-      const res = `https://api.botcahx.eu.org/api/textpro/neon-galaxy?text=?text=${encodeURIComponent(text)}&apikey=${btc}`;
+      const res = `https://api.botcahx.eu.org/api/textpro/neon-galaxy?text=${encodeURIComponent(text)}&apikey=${btc}`;
       await conn.sendFile(m.chat, res, 'textpro.jpeg', '', m);
     }
      if (command == 'neongreen') {
