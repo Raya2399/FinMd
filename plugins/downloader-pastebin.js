@@ -4,7 +4,7 @@ let handler = async (m, { text, usedPrefix, command }) => {
     if (!text) throw `Masukkan URL Pastebin!\n\n*Contoh:* ${usedPrefix + command} https://pastebin.com/eQLV4GfE`;
 
     try {
-        await m.reply("⏳ Sedang mengambil data...");
+        await m.reply(wait);
         let res = await fetch(`https://api.botcahx.eu.org/api/download/pastebin?url=${text}&apikey=${btc}`);
         let json = await res.json();
 
@@ -18,7 +18,7 @@ let handler = async (m, { text, usedPrefix, command }) => {
 };
 
 handler.command = ['pastebindl', 'pastebin'];
-handler.tags = ['tools'];
+handler.tags = ['downloader'];
 handler.help = ['pastebindl', 'pastebin'].map(a => a + ' <url>');
 handler.limit = true;
 
