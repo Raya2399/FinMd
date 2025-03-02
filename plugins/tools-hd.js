@@ -38,7 +38,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
        } else if (command === 'removebg' || command === 'nobg') {
         const api = await fetch(`https://api.botcahx.eu.org/api/tools/removebg?url=${out}&apikey=${btc}`);
         const image = await api.json();
-        const url = image.url.result;
+        const url = image.url;
         conn.sendFile(m.chat, url, null, wm, m);
       }
     } else {
