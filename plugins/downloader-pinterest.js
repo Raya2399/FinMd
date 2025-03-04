@@ -1,9 +1,9 @@
 let fetch = require('node-fetch');
-let handler = async (m, { usedPrefix, command, conn, args }) => {
-  if (!args[0]) throw `*🚩 Example:* ${usedPrefix}${command} Zhao Lusi`;
+let handler = async (m, { usedPrefix, command, conn, text }) => {
+  if (!text) throw `*🚩 Example:* ${usedPrefix}${command} Zhao Lusi`;
   m.reply(wait)
   try {
-    let response = await fetch(`https://api.botcahx.eu.org/api/search/pinterest?text1=${args[0]}&apikey=${btc}`);
+    let response = await fetch(`https://api.botcahx.eu.org/api/search/pinterest?text1=${text}&apikey=${btc}`);
     let data = await response.json();   
     let old = new Date()
     let limit = Math.min(5, data.result.length);
@@ -12,12 +12,12 @@ let handler = async (m, { usedPrefix, command, conn, args }) => {
       conn.sendFile(m.chat, data.result[i], 'pin.jpg', `🍟 *Fetching* : ${((new Date - old) * 1)} ms`, m);
     }
   } catch (e) {
-    throw `${eror}`;
+    throw eror
   }
 }
 
 handler.help = ['pinterest <keyword>'];
-handler.tags = ['internet', 'downloader'];
+handler.tags = ['internet'];
 handler.command = /^(pinterest)$/i;
 
 module.exports = handler;
