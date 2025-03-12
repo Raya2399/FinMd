@@ -5,8 +5,7 @@
 - ✅ **Update Menu** jadi lebih simple  
 - ✅ **Tambah Game** RPG dan lainnya  
 - ✅ **Menggunakan Baileys Latest**  
-- ✅ **Support Pairing Code**
-- ❎ **QR Code Deprecated**
+- ✅ **Support QR Code & Pairing Code**
 
 ### **Perintah Pairing:**  
 ```bash
