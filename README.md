@@ -4,7 +4,7 @@
 ----  
 - ✅ **Update Menu** jadi lebih simple  
 - ✅ **Tambah Game** RPG dan lainnya  
-- ✅ **Menggunakan Baileys 6.7.8**  
+- ✅ **Menggunakan Baileys Latest**  
 - ✅ **Support QR & Pairing Code**  
 
 ### **Perintah Pairing:**  
