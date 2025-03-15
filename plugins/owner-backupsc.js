@@ -18,7 +18,7 @@ let handler = async (m, { conn, isROwner }) => {
 
          let zipCommand = `cd "${currentDir}" && zip -r "${zipFileName}" . -x "node_modules/*"`;
          
-         await exec_(zipCommand);
+         await exec_(zipCommand, { maxBuffer: 1024 * 1024 * 1024 });
        
          const file = fs.readFileSync(zipFileName);
          await conn.sendMessage(
