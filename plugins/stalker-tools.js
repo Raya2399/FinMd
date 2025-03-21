@@ -21,8 +21,8 @@ let handler = async (m, {
     if (text.length < 2) throw `Contoh: ${usedPrefix + command} 2480197|2001`;
     let [id, server] = text.split('|');
     try {
-      let ml = await fetch(`https://api.botcahx.eu.org/api/stalk/ml?id=${id}&server=${server}&apikey=${btc}`).then(res => res.json());
-      await conn.reply(m.chat, ml.result.userName, m);
+    let ml = await fetch(`https://api.botcahx.eu.org/api/stalk/ml?id=${id}&server=${server}&apikey=${btc}`).then(res => res.json());
+    await conn.reply(m.chat,`*ID:* ${ml.result.user_id}\n*Server:* ${ml.result.server_id}\n*Username:* ${ml.result.userName}\n*Region:* ${ml.result.country}`, m);
     } catch (e) {
       console.log(e);
       throw eror
