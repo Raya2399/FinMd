@@ -1,5 +1,7 @@
 const FormData = require('form-data');
 const { fromBuffer } = require('file-type');
+const fetch = require('node-fetch')
+
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
 
