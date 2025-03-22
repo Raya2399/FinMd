@@ -1,4 +1,6 @@
-const uploadImage = require('../lib/uploadImage')
+const FormData = require('form-data');
+const { fromBuffer } = require('file-type');
+
 let handler = async (m, { conn, text, usedPrefix, command }) => {
 
     let [atas, bawah] = text.split`|`
@@ -19,3 +21,16 @@ handler.command = /^(s(tic?ker)?me(me)?)$/i
 handler.limit = false
 
 module.exports = handler
+
+async function uploadImage(buffer) { 
+  let { ext } = await fromBuffer(buffer);
+  let bodyForm = new FormData();
+  bodyForm.append("file", buffer, "file." + ext);
+  let res = await fetch("https://file.btch.rf.gd/api/upload.php", {
+    method: "post",
+    body: bodyForm,
+  });
+  let data = await res.json();
+  let resultUrl = data.result ? data.result.url : '';
+  return resultUrl;
+}
