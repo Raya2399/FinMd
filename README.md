@@ -105,6 +105,16 @@ https://github.com/clhuang/heroku-buildpack-webp-binaries.git
 - [FFmpeg](https://ffmpeg.org/download.html) [`Klik Disini`](https://ffmpeg.org/download.html) (**Jangan lupa tambahkan ke PATH**)  
 - [ImageMagick](https://imagemagick.org/script/download.php) [`Klik Disini`](https://imagemagick.org/script/download.php)  
 
+### FOR VPS USER
+```bash
+apt update && apt upgrade -y
+apt install nodejs imagemagick ffmpeg -y
+node -v
+if the version is still under 17, use this step
+curl -s https://deb.nodesource.com/setup_20.x | sudo bash
+apt-get install -y nodejs
+```
+
 ```bash
 git clone https://github.com/BOTCAHX/RTXZY-MD
 cd RTXZY-MD
