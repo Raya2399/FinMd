@@ -1,7 +1,7 @@
 let fetch = require('node-fetch');
 
 let handler = async (m, { text, usedPrefix, command }) => {
-    if (!text) throw `Masukkan URL Pastebin!\n\n*Contoh:* ${usedPrefix + command} https://pastebin.com/eQLV4GfE`;
+    if (!text) throw `Masukkan URL Pastebin!\n\n*Contoh:* ${usedPrefix + command} https://pastebin.com/z77zNeZb`;
 
     try {
         await m.reply(wait);
