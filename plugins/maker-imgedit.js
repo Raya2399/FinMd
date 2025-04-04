@@ -39,7 +39,7 @@ let handler = async (m, {
         apiUrl = `https://api.botcahx.eu.org/api/maker/jadihitam?url=${out}&apikey=${btc}`;
       } else if (command === 'toputih') {
         apiUrl = `https://api.botcahx.eu.org/api/maker/jadiputih?url=${out}&apikey=${btc}`;
-      } else if (command === 'toghibili') {
+      } else if (command === 'toghibli') {
         apiUrl = `https://api.botcahx.eu.org/api/maker/jadighibili?url=${out}&apikey=${btc}`;
       } else if (command === 'imgedit') {
         const text = args.join(" "); 
@@ -74,8 +74,8 @@ let handler = async (m, {
   }
 };
 
-handler.help = ['todisney', 'topixar', 'tocartoon', 'tocyberpunk', 'tovangogh', 'topixelart', 'tocomicbook', 'tohijab', 'tohitam', 'hitamkan', 'hytamkan', 'toputih', 'toghibili', 'imgedit'];
-handler.command = ['todisney', 'topixar', 'tocartoon', 'tocyberpunk', 'tovangogh', 'topixelart', 'tocomicbook', 'tohijab', 'tohitam', 'hitamkan', 'hytamkan', 'toputih', 'toghibili', 'imgedit'];
+handler.help = ['todisney', 'topixar', 'tocartoon', 'tocyberpunk', 'tovangogh', 'topixelart', 'tocomicbook', 'tohijab', 'tohitam', 'hitamkan', 'hytamkan', 'toputih', 'toghibli', 'imgedit'];
+handler.command = ['todisney', 'topixar', 'tocartoon', 'tocyberpunk', 'tovangogh', 'topixelart', 'tocomicbook', 'tohijab', 'tohitam', 'hitamkan', 'hytamkan', 'toputih', 'toghibli', 'imgedit'];
 handler.tags = ['maker'];
 handler.premium = false;
 handler.limit = 5;
