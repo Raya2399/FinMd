@@ -7,7 +7,7 @@ const express = require('express');
 const app = express();
 
 // Express.js 
-const ports = [4000, 3000, 5000, 8000, 8080];
+const ports = [4000, 3000, 5000, 8000, 8080, 4444];
 let availablePortIndex = 0;
 
 function checkPort(port) {
