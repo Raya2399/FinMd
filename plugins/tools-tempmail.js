@@ -27,7 +27,7 @@ let handler = async (m, { conn, command, usedPrefix }) => {
                 lastCheckedAt: Date.now()
             };
 
-            m.reply(`✅ *Temp Mail Anda:*\n📩 *Email:* ${email}\n⏳ *Tunggu sekitar 5-10 menit sebelum cek.*`);
+            m.reply(`✅ *Temp Mail Anda:*\n📩 *Email:* ${email}\n⏳ *Tunggu sekitar 5-10 menit sebelum cek.*\nUntuk Cek Pesan Email silahkan ketik${usedPrefix + command}cekmail`);
         } catch (e) {
             console.error(e);
             m.reply("❌ Terjadi kesalahan saat membuat email sementara!");
