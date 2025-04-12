@@ -13,7 +13,7 @@ let handler = async (m, { conn, command, usedPrefix }) => {
 
     if (command === "tempmail") {
         if (conn.sessionsMail[m.sender]) {
-            return m.reply(`🚀 Anda sudah memiliki Temp Mail!\n📩 *Email:* ${conn.sessionsMail[m.sender].email}\n⏳ *Tunggu sekitar 5-10 menit sebelum cek.*`);
+            return m.reply(`🚀 Anda sudah memiliki Temp Mail!\n📩 *Email:* ${conn.sessionsMail[m.sender].email}\n⏳ *Tunggu sekitar 5-10 menit sebelum cek.*\nUntuk Cek Pesan Email silahkan ketik${usedPrefix + command}cekmail`);
         }
 
         try {
