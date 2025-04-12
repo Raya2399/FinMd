@@ -13,7 +13,7 @@ let handler = async (m, { conn, command, usedPrefix }) => {
 
     if (command === "tempmail") {
         if (conn.sessionsMail[m.sender]) {
-            return m.reply(`🚀 Anda sudah memiliki Temp Mail!\n📩 *Email:* ${conn.sessionsMail[m.sender].email}\n⏳ *Tunggu sekitar 5-10 menit sebelum cek.*\nUntuk Cek Pesan Email silahkan ketik${usedPrefix + command}cekmail`);
+            return m.reply(`🚀 Anda sudah memiliki Temp Mail!\n📩 *Email:* ${conn.sessionsMail[m.sender].email}\n⏳ *Tunggu sekitar 5-10 menit sebelum cek.*\n\n_Untuk Cek Pesan Email silahkan ketik_\n\n${usedPrefix}cekmail`);
         }
 
         try {
@@ -27,7 +27,7 @@ let handler = async (m, { conn, command, usedPrefix }) => {
                 lastCheckedAt: Date.now()
             };
 
-            m.reply(`✅ *Temp Mail Anda:*\n📩 *Email:* ${email}\n⏳ *Tunggu sekitar 5-10 menit sebelum cek.*\nUntuk Cek Pesan Email silahkan ketik${usedPrefix + command}cekmail`);
+            m.reply(`✅ *Temp Mail Anda:*\n📩 *Email:* ${email}\n⏳ *Tunggu sekitar 5-10 menit sebelum cek.*\n\n_Untuk Cek Pesan Email silahkan ketik_\n\n${usedPrefix}cekmail`);
         } catch (e) {
             console.error(e);
             m.reply("❌ Terjadi kesalahan saat membuat email sementara!");
