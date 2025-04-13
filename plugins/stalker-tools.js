@@ -9,6 +9,7 @@ let handler = async (m, {
 }) => {
   if (command == 'ffstalk') {
     if (!text) throw `Example : ${usedPrefix + command} 919044185`;
+    m.reply(wait);
     try {
       let ff = await fetch(`https://api.botcahx.eu.org/api/stalk/ff?id=${text}&apikey=${btc}`).then(res => res.json());
       await conn.reply(m.chat, ff.result.userNameGame, m);
@@ -17,8 +18,9 @@ let handler = async (m, {
       throw eror
     }
   }
-    if (command == 'mlstalk') {
+  if (command == 'mlstalk') {
     if (text.length < 2) throw `Contoh: ${usedPrefix + command} 2480197|2001`;
+    m.reply(wait);
     let [id, server] = text.split('|');
     try {
     let ml = await fetch(`https://api.botcahx.eu.org/api/stalk/ml?id=${id}&server=${server}&apikey=${btc}`).then(res => res.json());
@@ -30,6 +32,7 @@ let handler = async (m, {
   }
   if (command == 'supersusstalk') {
     if (!text) throw `Example : ${usedPrefix + command} 20431364`;
+    m.reply(wait);
     try {
       let sus = await fetch(`https://api.botcahx.eu.org/api/stalk/supersus?id=${text}&apikey=${btc}`).then(res => res.json());
       let results = sus.result;
@@ -53,6 +56,7 @@ let handler = async (m, {
   }
   if (command == 'npmstalk') {
     if (!text) throw `Example : ${usedPrefix + command} tiktokdl`;
+    m.reply(wait);
     try {
         let npm = await fetch(`https://api.botcahx.eu.org/api/stalk/npm?name=${text}&apikey=${btc}`).then(res => res.json());      
         let caption = `*N P M S T A L K*\n\n`
@@ -84,6 +88,7 @@ let handler = async (m, {
  }
  if (command == 'repostalk') {
     if (!text) throw `Example : ${usedPrefix + command} RTXZY-MD`;
+    m.reply(wait);
     try {
       let repo = await fetch(`https://api.botcahx.eu.org/api/stalk/repo?repo=${text}&apikey=${btc}`).then(res => res.json());
       let caption = `*R E P O S T A L K*\n\n`;
@@ -119,10 +124,35 @@ let handler = async (m, {
       throw eror
     }
   }
+  if (command == 'genshinstalk' || command == 'stalkgenshin') {
+    if (!text) throw `Example : ${usedPrefix + command} 843829161`;
+    m.reply(wait);
+    try {
+      let genshin = await fetch(`https://api.botcahx.eu.org/api/stalk/genshin?id=${text}&apikey=${btc}`).then(res => res.json());
+      
+      if (!genshin.status) throw 'Failed to fetch Genshin Impact data';
+      
+      let result = genshin.result[0];
+      let caption = `*G E N S H I N  I M P A C T*\n\n`;
+      caption += `*Nickname:* ${result.nickname}\n`;
+      caption += `*UID:* ${result.uid}\n`;
+      caption += `*Level:* ${result.level}\n`;
+      caption += `*World Level:* ${result.worldLevel}\n`;
+      caption += `*Achievement:* ${result.achievement}\n`;
+      caption += `*Card ID:* ${result.cardId}\n`;
+      caption += `*Spiral Abyss:* ${result.spiralAbyss}\n`;
+      caption += `*Detail:* ${result.detail}\n`;
+      
+      await conn.reply(m.chat, caption, m);
+    } catch (e) {
+      console.log(e);
+      throw eror
+    }
+  }
 }
 
-handler.command = handler.help = ['ffstalk', 'mlstalk','supersusstalk','npmstalk','repostalk']
+handler.command = handler.help = ['ffstalk', 'mlstalk', 'supersusstalk', 'npmstalk', 'repostalk', 'genshinstalk', 'stalkgenshin']
 handler.tags = ['stalk']
 handler.limit = true
 
-module.exports = handler              
+module.exports = handler
