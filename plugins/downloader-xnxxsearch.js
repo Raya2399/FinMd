@@ -2,7 +2,7 @@ var fetch = require("node-fetch");
 
 var handler = async (m, { text, usedPrefix, command }) => {
   if (!text) {
-    throw `Contoh:\n${usedPrefix + command} boobs`;
+    throw `Contoh:\n${usedPrefix + command} Big boobs`;
   }
   try {
   const search = await fetch(
