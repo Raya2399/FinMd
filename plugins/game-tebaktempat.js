@@ -35,7 +35,7 @@ ${options}
 `.trim()
 
     conn.tebaktempat[id] = [
-        await conn.sendButtonImg(m.chat, json.img, caption, 'Tebak Tempat', null, m),
+        await conn.sendMessage(m.chat, { image: { url: json.img }, caption: caption}, { quoted: m }),
         json, poin,
         setTimeout(() => {
             if (conn.tebaktempat[id]) {
