@@ -27,7 +27,7 @@ handler.before = async function(m, { conn }) {
                     participant: m.key.participant
                 }
             });
-            m.reply('Astagfirullah🥲');
+            m.reply('⚠️antiporn detected⚠️');
         }
     } catch (e) {
         console.log(e);
