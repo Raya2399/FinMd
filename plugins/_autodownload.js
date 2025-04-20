@@ -462,11 +462,11 @@ async function _xiaohongshu(url, m) {
                     await conn.sendMessage(
                         m.chat,
                         {
-                            image: img,
-                            caption: `🍟 *Fetching* : ${(new Date() - old) * 1} ms\n*Title:* ${title}`,
+                            image: { url: img },
+                            caption: `🍟 *Fetching* : ${(new Date() - old) * 1} ms`,
                         },
                         { quoted: m }
-                    );
+                    );               
                 }
             }
         } else {
