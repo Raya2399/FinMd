@@ -149,9 +149,20 @@ let handler = async (m, {
       throw eror
     }
   }
+  if (command == 'hokstalk') {
+  if (!text) throw `Example: ${usedPrefix + command} 6467015277108375938`;
+  m.reply(wait);
+  try {
+    let { result } = await fetch(`https://api.botcahx.eu.org/api/stalk/hok?id=${text}&apikey=${btc}`).then(res => res.json());
+    if (!result.ok) throw 'Player not found!';
+    conn.reply(m.chat, result.name, m);
+  } catch (e) {
+    throw eror
+  }
+ }
 }
 
-handler.command = handler.help = ['ffstalk', 'mlstalk', 'supersusstalk', 'npmstalk', 'repostalk', 'genshinstalk', 'stalkgenshin']
+handler.command = handler.help = ['ffstalk', 'mlstalk', 'supersusstalk', 'npmstalk', 'repostalk', 'genshinstalk', 'stalkgenshin', 'hokstalk']
 handler.tags = ['stalk']
 handler.limit = true
 
