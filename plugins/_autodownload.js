@@ -434,16 +434,21 @@ async function _xiaohongshu(url, m) {
         if (global.db.data.users[m.sender].limit > 0) {
             let res = await axios.get(`https://api.botcahx.eu.org/api/download/rednote?url=${url}&apikey=${btc}`);
             let result = res.data.result;
-            if (!result || result.err !== 0) throw `Gagal mengambil data!`;
-            
+
+            if (!result || !result.media) throw `Gagal mengambil data!`;
+
             global.db.data.users[m.sender].limit -= 1;
 
-            if (result.video) {
+            const media = result.media;
+            const meta = result.metadata;
+            const title = meta?.title || "No title";
+
+            if (media.videoUrl) {
                 await conn.sendMessage(
                     m.chat,
                     {
                         video: {
-                            url: result.video,
+                            url: media.videoUrl,
                         },
                         caption: `🍟 *Fetching* : ${(new Date() - old) * 1} ms`,
                     },
@@ -451,12 +456,17 @@ async function _xiaohongshu(url, m) {
                         mention: m,
                     }
                 );
-            } else if (result.images && result.images.length > 0) {
-                for (let img of result.images) {
+            } else if (media.images && media.images.length > 0) {
+                for (let img of media.images) {
                     await _sleep(3000);
-                    conn.sendMessage(m.chat, { 
-                    image: img, caption: `🍟 *Fetching* : ${(new Date() - old) * 1} ms` },
-                    { quoted: m })
+                    await conn.sendMessage(
+                        m.chat,
+                        {
+                            image: img,
+                            caption: `🍟 *Fetching* : ${(new Date() - old) * 1} ms\n*Title:* ${title}`,
+                        },
+                        { quoted: m }
+                    );
                 }
             }
         } else {
