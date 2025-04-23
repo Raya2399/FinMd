@@ -6,7 +6,7 @@
 - ✅ **Tambah Game** RPG dan lainnya  
 - ✅ **Menggunakan Baileys Latest**  
 - ✅ **Support QR Code & Pairing Code**
-- ✅ **Node.js 20+ Required**
+- ✅ **Wajib Menggunakan Node.js 20+**
 
 ### **Perintah Pairing:**  
 ```bash
