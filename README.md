@@ -4,31 +4,16 @@
 ----  
 - ✅ **Update Menu** jadi lebih simple  
 - ✅ **Tambah Game** RPG dan lainnya  
-- ✅ **Menggunakan Baileys Latest**  
-- ✅ **Support QR Code & Pairing Code**
+- ✅ **Menggunakan Baileys Latest**  [Baileys](https://github.com/WhiskeySockets/Baileys)
+- ✅ **Delete QR Code** Jadi Alternatif Nya Memakai Pairing Code
 - ✅ **Wajib Menggunakan Node.js 20+**
 
-### **Perintah Pairing:**  
+### **Perintah Start Pairng:**  
 ```bash
-node index.js --pairing
-```  
-### **Atau bisa juga dengan:**  
-```bash
-npm run pairing
+node index.js
 ```  
 
-- **Untuk Pengguna Panel:**  
-  1. Ubah **startup panel** kalian dengan salah satu perintah di atas.  
-  2. Setelah berhasil mendapatkan **_Sessions_**, ubah kembali ke mode normal:  
-     ```bash
-     npm start
-     ```  
-     atau  
-     ```bash
-     node index.js
-     ```  
-
-- **Fitur 97%** implementasi dari Rest API, jadi **wajib daftar terlebih dahulu** agar bot bekerja dengan baik.  
+- **Fitur Bot 97%** implementasi dari Rest API, jadi **wajib daftar terlebih dahulu** agar bot bekerja dengan baik.  
 
 📢 **Informasi API & Update Script:** [WhatsApp Channel](https://whatsapp.com/channel/0029Va8ZH8fFXUuc69TGVw1q)  
 
@@ -122,10 +107,6 @@ npm i
 node index.js
 ```  
 
-### **Untuk mendapatkan pairing code**  
-```bash
-node index.js --pairing
-```  
 
 ---  
 
