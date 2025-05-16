@@ -8,7 +8,7 @@
 - ✅ **Delete QR Code** Jadi Alternatif Nya Memakai Pairing Code
 - ✅ **Wajib Menggunakan Node.js 20+**
 
-### **Perintah Start Pairng:**  
+### **Perintah Start & Pairing:**  
 ```bash
 node index.js
 ```  
