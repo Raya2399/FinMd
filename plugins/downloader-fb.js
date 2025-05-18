@@ -1,8 +1,9 @@
 const fetch = require('node-fetch');
 
 let handler = async (m, { conn, args, usedPrefix, command }) => {  
-        if (!args[0]) throw `Gunakan contoh ${usedPrefix}${command} https://www.facebook.com/watch/?v=1393572814172251`;
-        try {
+    if (!args[0]) throw `Gunakan contoh ${usedPrefix}${command} https://www.facebook.com/watch/?v=1393572814172251`;
+    try {
+        await m.reply(wait)
         const res = await fetch(`https://api.botcahx.eu.org/api/dowloader/fbdown3?url=${args[0]}&apikey=${btc}`);
         const json = await res.json();
         let urls = json.result.url.urls;
@@ -12,9 +13,13 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
         for (let url of urls) {
             if (url.sd) {
                 conn.sendFile(m.chat, url.sd, 'fb.mp4', `*Facebook Downloader*`, m);
-                break;
+                return;
+            } else if (url.hd) {
+                conn.sendFile(m.chat, url.hd, 'fb.mp4', `*Facebook Downloader*`, m);
+                return;
             }
         }
+        throw `Tidak ditemukan URL video SD atau HD`;
     } catch (error) {
         console.log(error);
         throw 'Terjadi kesalahan pada saat melakukan proses download';
