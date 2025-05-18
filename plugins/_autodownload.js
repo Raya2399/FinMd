@@ -223,21 +223,26 @@ async function _instagram(link, m) {
         console.error(err);
     }
 }
+
 async function _facebook(link, m) {
     try {
         if (global.db.data.users[m.sender].limit > 0) {
             const response = await fetch(`https://api.botcahx.eu.org/api/dowloader/fbdown3?url=${link}&apikey=${btc}`);
             let json = await response.json();
             let urls = json.result.url.urls;
-            if (Array.isArray(urls) && urls.some((url) => url.sd)) {
-                global.db.data.users[m.sender].limit -= 1;
-                let videoUrl = urls.find((url) => url.sd).sd;
-                conn.sendFile(m.chat, videoUrl, "fb.mp4", `🍟 *Fetching* : ${(new Date() - old) * 1} ms`, m);
+            if (Array.isArray(urls)) {
+                let videoUrl = urls.find((url) => url.sd)?.sd || urls.find((url) => url.hd)?.hd;
+                if (videoUrl) {
+                    global.db.data.users[m.sender].limit -= 1;
+                    conn.sendFile(m.chat, videoUrl, "fb.mp4", `🍟 *Fetching* : ${(new Date() - old) * 1} ms`, m);
+                } else {
+                    conn.reply(m.chat, "Gagal mendapatkan video SD atau HD", m);
+                }
             } else {
                 conn.reply(m.chat, "Gagal mendapatkan video", m);
             }
         } else {
-            conn.reply(m.chat, "limit kamu habis!", m);
+            conn.reply(m.chat, "Limit kamu habis!", m);
         }
     } catch (error) {
         console.error(error);
