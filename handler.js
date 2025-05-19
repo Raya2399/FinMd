@@ -878,30 +878,37 @@ module.exports = {
                 antibot: false, 
                 rpg: false, 
             }
-            let memgc = global.db.data.chats[m.chat].memgc[m.sender]
-            if (typeof memgc !== 'object') global.db.data.chats[m.chat].memgc[m.sender] = {}
-            if (memgc) {
-                if (!('blacklist' in memgc)) memgc.blacklist = false
-                if (!('banned' in memgc)) memgc.banned = false
-                if (!isNumber(memgc.bannedTime)) memgc.bannedTime = 0
-                if (!isNumber(memgc.chat)) memgc.chat = 0
-                if (!isNumber(memgc.chatTotal)) memgc.chatTotal = 0
-                if (!isNumber(memgc.command)) memgc.command = 0
-                if (!isNumber(memgc.commandTotal)) memgc.commandTotal = 0
-                if (!isNumber(memgc.lastseen)) memgc.lastseen = 0
-            } else global.db.data.chats[m.chat].memgc[m.sender] = {
-                blacklist: false,
-                banned: false,
-                bannedTime: 0,
-                chat: 0,
-                chatTotal: 0,
-                command: 0,
-                commandTotal: 0,
-                lastseen: 0
+            let memgc = global.db.data.chats[m.chat]?.memgc?.[m.sender];
+            if (typeof memgc !== 'object' || memgc === null) {
+                global.db.data.chats[m.chat] = global.db.data.chats[m.chat] || {};
+                global.db.data.chats[m.chat].memgc = global.db.data.chats[m.chat].memgc || {};
+                global.db.data.chats[m.chat].memgc[m.sender] = {};
+                memgc = global.db.data.chats[m.chat].memgc[m.sender];
             }
-        } catch (e) {
-            console.error(e)
-        }
+            if (memgc) {
+                if (!('blacklist' in memgc)) memgc.blacklist = false;
+                if (!('banned' in memgc)) memgc.banned = false;
+                if (!isNumber(memgc.bannedTime)) memgc.bannedTime = 0;
+                if (!isNumber(memgc.chat)) memgc.chat = 0;
+                if (!isNumber(memgc.chatTotal)) memgc.chatTotal = 0;
+                if (!isNumber(memgc.command)) memgc.command = 0;
+                if (!isNumber(memgc.commandTotal)) memgc.commandTotal = 0;
+                if (!isNumber(memgc.lastseen)) memgc.lastseen = 0;
+            } else {
+                global.db.data.chats[m.chat].memgc[m.sender] = {
+                    blacklist: false,
+                    banned: false,
+                    bannedTime: 0,
+                    chat: 0,
+                    chatTotal: 0,
+                    command: 0,
+                    commandTotal: 0,
+                    lastseen: 0
+                };
+            }
+            } catch (e) {
+                console.error(e);
+            }
             if (opts['nyimak']) return
             if (!m.fromMe && opts['self']) return
             if (opts['pconly'] && m.chat.endsWith('g.us')) return
