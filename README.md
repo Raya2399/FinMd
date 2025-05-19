@@ -10,7 +10,7 @@
 
 
 ### Contact Admin
-Hubungi admin kami melalui WhatsApp untuk informasi lebih lanjut atau bantuan cepat.
+Hubungi admin melalui WhatsApp untuk informasi lebih lanjut atau bantuan cepat.
 
 <p align="center">
   <a href="https://wa.me/6282221792667">
