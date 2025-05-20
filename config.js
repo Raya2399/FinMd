@@ -4,7 +4,7 @@ global.prems = ['62895331520602']
 global.nameowner = 'Tio'
 global.numberowner = '62895331520602' 
 global.mail = 'support@tioprm.eu.org' 
-global.gc = 'https://chat.whatsapp.com/CP5mV2D9IO730HpBgmkuyi'
+global.gc = 'https://chat.whatsapp.com/I5RpePh2b5u37OyFjzCNTr'
 global.instagram = 'https://instagram.com/prm2.0'
 global.wm = '© Tio'
 global.wait = '_*Tunggu sedang di proses...*_'
@@ -15,8 +15,8 @@ global.author = 'Bot WhatsApp'
 global.maxwarn = '5' // Peringatan maksimum Warn
 
 global.autobio = false // Set true/false untuk mengaktifkan atau mematikan autobio (default: false)
-global.antiporn = true // Set true/false untuk Auto delete pesan porno (bot harus admin) (default: true)
-global.spam = true // Set true/false untuk anti spam (default: true)
+global.antiporn = false // Set true/false untuk Auto delete pesan porno (bot harus admin) (default: false)
+global.spam = false // Set true/false untuk anti spam (default: false)
 global.gcspam = false // Set true/false untuk menutup grup ketika spam (default: false)
     
 
