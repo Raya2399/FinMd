@@ -17,7 +17,7 @@ ${media.length} Byte(s)
 ${isTele ? '(Tidak Ada Tanggal Kedaluwarsa)' : '(Tidak Ada Tanggal Kedaluwarsa)'}`)
 }
 handler.help = ['tourl <reply image>']
-handler.tags = ['sticker']
+handler.tags = ['tools']
 handler.command = /^(upload|tourl)$/i
 handler.limit = true
 module.exports = handler
