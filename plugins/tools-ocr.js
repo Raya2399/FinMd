@@ -26,7 +26,7 @@ async function uploader(buffer) {
   bodyForm = new FormData();
   bodyForm.append("file", buffer, "file." + ext);
 
- let res = await fetch("https://file.btch.rf.gd/api/upload.php", {
+ let res = await fetch("https://file.botcahx.eu.org/api/upload.php", {
     method: "post",
     body: bodyForm,
   });
