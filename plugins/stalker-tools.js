@@ -15,7 +15,7 @@ let handler = async (m, {
       await conn.reply(m.chat, ff.result.userNameGame, m);
     } catch (e) {
       console.log(e);
-      throw eror
+      throw eror;
     }
   }
   if (command == 'mlstalk') {
@@ -23,11 +23,67 @@ let handler = async (m, {
     m.reply(wait);
     let [id, server] = text.split('|');
     try {
-    let ml = await fetch(`https://api.botcahx.eu.org/api/stalk/ml?id=${id}&server=${server}&apikey=${btc}`).then(res => res.json());
-    await conn.reply(m.chat,`*ID:* ${ml.result.user_id}\n*Server:* ${ml.result.server_id}\n*Username:* ${ml.result.userName}\n*Region:* ${ml.result.country}`, m);
+      let ml = await fetch(`https://api.botcahx.eu.org/api/stalk/ml?id=${id}&server=${server}&apikey=${btc}`).then(res => res.json());
+      await conn.reply(m.chat, `*ID:* ${ml.result.user_id}\n*Server:* ${ml.result.server_id}\n*Username:* ${ml.result.userName}\n*Region:* ${ml.result.country}`, m);
     } catch (e) {
       console.log(e);
-      throw eror
+      throw eror;
+    }
+  }
+  if (command == 'mlstalk2') {
+    if (text.length < 2) throw `Contoh: ${usedPrefix + command} 214885010|2253`;
+    m.reply(wait);
+    let [id, server] = text.split('|');
+    try {
+      let ml = await fetch(`https://api.botcahx.eu.org/api/stalk/ml-v2?id=${id}&server=${server}&apikey=${btc}`).then(res => res.json());
+      if (!ml.status) throw 'Failed to fetch Mobile Legends data';
+      let result = ml.result.data.stalk_info;
+      let shopData = ml.result.data.categorized_shop;
+      let caption = `*M O B I L E  L E G E N D S  (V2)*\n\n`;
+      caption += `*User ID:* ${result.user_id}\n`;
+      caption += `*Server:* ${result.region}\n`;
+      caption += `*Nickname:* ${result.stalk_data.split('\n')[2].split(': ')[1]}\n`;
+      caption += `*Country:* ${result.stalk_data.split('\n')[3].split(': ')[1]}\n\n`;
+      caption += `*Diamond Packs:*\n`;
+      result.shop_data.diamond.goods.forEach(good => {
+        caption += `- ${good.title}: ${good.limits.reached ? 'Reached' : 'Available'}, Inventory: ${good.limits.inventory}\n`;
+      });
+      caption += `\n*Event Packs:*\n`;
+      result.shop_data.event.goods.forEach(good => {
+        caption += `- ${good.title}: ${good.limits.reached ? 'Reached' : 'Available'}, Inventory: ${good.limits.inventory}\n`;
+      });
+      caption += `\n*Weekly Pass:*\n`;
+      shopData.weeklyPass.items.forEach(item => {
+        caption += `- ${item.title}: ${item.limits.reached_limit ? 'Reached' : 'Available'}\n`;
+      });
+      caption += `\n*Diamond Packs (Categorized):*\n`;
+      shopData.diamondPacks.items.forEach(item => {
+        caption += `- ${item.title}: ${item.limits.reached_limit ? 'Reached' : 'Available'}\n`;
+      });
+      caption += `\n*First Charge Bonus:*\n`;
+      shopData.firstCharge.items.forEach(item => {
+        caption += `- ${item.title}: ${item.limits.reached_limit ? 'Reached' : 'Available'}\n`;
+      });
+      caption += `\n*Special Offers:*\n`;
+      if (shopData.specialOffers.items.length === 0) {
+        caption += `- No special offers available\n`;
+      } else {
+        shopData.specialOffers.items.forEach(item => {
+          caption += `- ${item.title}: ${item.limits.reached_limit ? 'Reached' : 'Available'}\n`;
+        });
+      }
+      caption += `\n*Other Items:*\n`;
+      if (shopData.other.items.length === 0) {
+        caption += `- No other items available\n`;
+      } else {
+        shopData.other.items.forEach(item => {
+          caption += `- ${item.title}: ${item.limits.reached_limit ? 'Reached' : 'Available'}\n`;
+        });
+      }
+      await conn.reply(m.chat, caption, m);
+    } catch (e) {
+      console.log(e);
+      throw eror;
     }
   }
   if (command == 'supersusstalk') {
@@ -51,42 +107,42 @@ let handler = async (m, {
       await conn.reply(m.chat, caption, m);
     } catch (e) {
       console.log(e);
-      throw eror
+      throw eror;
     }
   }
   if (command == 'npmstalk') {
     if (!text) throw `Example : ${usedPrefix + command} tiktokdl`;
     m.reply(wait);
     try {
-        let npm = await fetch(`https://api.botcahx.eu.org/api/stalk/npm?name=${text}&apikey=${btc}`).then(res => res.json());      
-        let caption = `*N P M S T A L K*\n\n`
-        caption += `*ID:* ${npm.result._id}\n`
-        caption += `*Name:* ${npm.result.name}\n`
-        caption += `*Description:* ${npm.result.description}\n`
-        caption += `*Main:* ${npm.result.main}\n`
-        caption += `*License:* ${npm.result.license}\n`
-        caption += `*Homepage:* ${npm.result.homepage}\n`
-        caption += `*Keywords:* ${npm.result.keywords}\n`
-        caption += `*Repository:* ${npm.result.repository.url}\n`
-        caption += `*Bugs:* ${npm.result.bugs.url}\n`       
-        let versions = npm.result.versions;
-        for (let version in versions) {
-            let v = versions[version];
-            caption += `\n*Version: ${v.version}*\n`
-            caption += `*Description:* ${v.description}\n`
-            caption += `*Main:* ${v.main}\n`
-            caption += `*License:* ${v.license}\n`
-            caption += `*Homepage:* ${v.homepage}\n`
-            caption += `*Keywords:* ${v.keywords}\n`
-            caption += `*Repository:* ${v.repository.url}\n`
-            caption += `*Bugs:* ${v.bugs.url}\n`
-        }
-        await conn.reply(m.chat, caption, m);
-      } catch (e) {
-      throw eror
+      let npm = await fetch(`https://api.botcahx.eu.org/api/stalk/npm?name=${text}&apikey=${btc}`).then(res => res.json());
+      let caption = `*N P M S T A L K*\n\n`;
+      caption += `*ID:* ${npm.result._id}\n`;
+      caption += `*Name:* ${npm.result.name}\n`;
+      caption += `*Description:* ${npm.result.description}\n`;
+      caption += `*Main:* ${npm.result.main}\n`;
+      caption += `*License:* ${npm.result.license}\n`;
+      caption += `*Homepage:* ${npm.result.homepage}\n`;
+      caption += `*Keywords:* ${npm.result.keywords}\n`;
+      caption += `*Repository:* ${npm.result.repository.url}\n`;
+      caption += `*Bugs:* ${npm.result.bugs.url}\n`;
+      let versions = npm.result.versions;
+      for (let version in versions) {
+        let v = versions[version];
+        caption += `\n*Version: ${v.version}*\n`;
+        caption += `*Description:* ${v.description}\n`;
+        caption += `*Main:* ${v.main}\n`;
+        caption += `*License:* ${v.license}\n`;
+        caption += `*Homepage:* ${v.homepage}\n`;
+        caption += `*Keywords:* ${v.keywords}\n`;
+        caption += `*Repository:* ${v.repository.url}\n`;
+        caption += `*Bugs:* ${v.bugs.url}\n`;
+      }
+      await conn.reply(m.chat, caption, m);
+    } catch (e) {
+      throw eror;
     }
- }
- if (command == 'repostalk') {
+  }
+  if (command == 'repostalk') {
     if (!text) throw `Example : ${usedPrefix + command} RTXZY-MD`;
     m.reply(wait);
     try {
@@ -121,7 +177,7 @@ let handler = async (m, {
       caption += `*Is Site Admin:* ${repo.result.items[0].author.isSiteAdmin}\n`;
       await conn.reply(m.chat, caption, m);
     } catch (error) {
-      throw eror
+      throw eror;
     }
   }
   if (command == 'genshinstalk' || command == 'stalkgenshin') {
@@ -129,9 +185,7 @@ let handler = async (m, {
     m.reply(wait);
     try {
       let genshin = await fetch(`https://api.botcahx.eu.org/api/stalk/genshin?id=${text}&apikey=${btc}`).then(res => res.json());
-      
       if (!genshin.status) throw 'Failed to fetch Genshin Impact data';
-      
       let result = genshin.result[0];
       let caption = `*G E N S H I N  I M P A C T*\n\n`;
       caption += `*Nickname:* ${result.nickname}\n`;
@@ -142,28 +196,27 @@ let handler = async (m, {
       caption += `*Card ID:* ${result.cardId}\n`;
       caption += `*Spiral Abyss:* ${result.spiralAbyss}\n`;
       caption += `*Detail:* ${result.detail}\n`;
-      
       await conn.reply(m.chat, caption, m);
     } catch (e) {
       console.log(e);
-      throw eror
+      throw eror;
     }
   }
   if (command == 'hokstalk') {
-  if (!text) throw `Example: ${usedPrefix + command} 6467015277108375938`;
-  m.reply(wait);
-  try {
-    let { result } = await fetch(`https://api.botcahx.eu.org/api/stalk/hok?id=${text}&apikey=${btc}`).then(res => res.json());
-    if (!result.ok) throw 'Player not found!';
-    conn.reply(m.chat, result.name, m);
-  } catch (e) {
-    throw eror
+    if (!text) throw `Example: ${usedPrefix + command} 6467015277108375938`;
+    m.reply(wait);
+    try {
+      let { result } = await fetch(`https://api.botcahx.eu.org/api/stalk/hok?id=${text}&apikey=${btc}`).then(res => res.json());
+      if (!result.ok) throw 'Player not found!';
+      conn.reply(m.chat, result.name, m);
+    } catch (e) {
+      throw eror;
+    }
   }
- }
 }
 
-handler.command = handler.help = ['ffstalk', 'mlstalk', 'supersusstalk', 'npmstalk', 'repostalk', 'genshinstalk', 'stalkgenshin', 'hokstalk']
-handler.tags = ['stalk']
-handler.limit = true
+handler.command = handler.help = ['ffstalk', 'mlstalk', 'mlstalk2', 'supersusstalk', 'npmstalk', 'repostalk', 'genshinstalk', 'stalkgenshin', 'hokstalk'];
+handler.tags = ['stalk'];
+handler.limit = true;
 
-module.exports = handler
+module.exports = handler;
