@@ -1,4 +1,4 @@
-let fetch = require('node-fetch')
+/*let fetch = require('node-fetch')
 let handler = async (m, { conn }) => {
 try {
   let res = await fetch(`https://api.botcahx.eu.org/api/news/Indozone?&apikey=${btc}`);
@@ -33,3 +33,4 @@ throw eror
       return list[Math.floor(list.length * Math.random())]
     }
     
+*/
