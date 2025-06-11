@@ -1,7 +1,6 @@
 let fetch = require('node-fetch');
 
-let handler = async (m, { conn, command, args }) => {
-  let text = args[0];
+let handler = async (m, { conn, command, text }) => {
   if (!text) return conn.reply(m.chat, 'Tidak ada teks untuk dicari', m);
 
   try {
@@ -32,8 +31,7 @@ let handler = async (m, { conn, command, args }) => {
       }
     }, {});
   } catch (e) {
-    conn.reply(m.chat, `Error: ${e.message || 'Terjadi kesalahan saat mencari'}`, m);
-  }
+  conn.reply(m.chat, eror, m)
 };
 
 handler.help = ['google'].map(v => v + ' <pencarian>');
