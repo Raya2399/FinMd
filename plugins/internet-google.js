@@ -5,30 +5,34 @@ let handler = async (m, { conn, command, args }) => {
   if (!text) return conn.reply(m.chat, 'Tidak ada teks untuk dicari', m);
 
   try {
+    m.reply(wait)
     let response = await fetch(`https://api.botcahx.eu.org/api/search/google?text1=${encodeURIComponent(text)}&apikey=${btc}`);
     let data = await response.json();
 
-    if (!data.status) throw eror
+    if (!data.status) throw new Error('Pencarian gagal');
 
-    let msg = data.result.map(({ title, url, description }) => {
-      return `*${title}*\n_${url}_\n_${description}_`;
+    let msg = data.result.map(({ title, url, snippet }) => {
+      return `*${title}*\n_${url}_\n_${snippet || 'Tidak ada deskripsi tersedia'}_`;
     }).join('\n\n');
+    
     conn.relayMessage(m.chat, {
-     extendedTextMessage:{
-                text: msg, 
-                contextInfo: {
-                     externalAdReply: {
-                        title: wm,
-                        mediaType: 1,
-                        previewType: 0,
-                        renderLargerThumbnail: true,
-                        thumbnailUrl: 'https://telegra.ph/file/d7b761ea856b5ba7b0713.jpg',
-                        sourceUrl: ''
-                    }
-                }, mentions: [m.sender]
-}}, {})
+      extendedTextMessage: {
+        text: msg, 
+        contextInfo: {
+          externalAdReply: {
+            title: wm,
+            mediaType: 1,
+            previewType: 0,
+            renderLargerThumbnail: true,
+            thumbnailUrl: 'https://telegra.ph/file/d7b761ea856b5ba7b0713.jpg',
+            sourceUrl: ''
+          }
+        }, 
+        mentions: [m.sender]
+      }
+    }, {});
   } catch (e) {
-    throw eror
+    conn.reply(m.chat, `Error: ${e.message || 'Terjadi kesalahan saat mencari'}`, m);
   }
 };
 
