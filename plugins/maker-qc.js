@@ -1,6 +1,7 @@
 const axios = require('axios');
 const { Sticker } = require('wa-sticker-formatter');
-const uploadFile = require('../lib/uploadImage');
+const FormData = require('form-data');
+const { fromBuffer } = require('file-type');
 const sharp = require('sharp');
 
 let handler = async (m, { conn, text, usedPrefix, command, isOwner }) => {
@@ -9,7 +10,7 @@ let handler = async (m, { conn, text, usedPrefix, command, isOwner }) => {
         let mime = (q.msg || q).mimetype || q.mediaType || '';
         let txt = text ? text : typeof q.text == 'string' ? q.text : '';
         let avatar = await conn.profilePictureUrl(q.sender, 'image').catch(_ => 'https://telegra.ph/file/320b066dc81928b782c7b.png');
-        avatar = /tele/.test(avatar) ? avatar : await uploadFile((await conn.getFile(avatar)).data);
+        avatar = /tele/.test(avatar) ? avatar : await uploadImage((await conn.getFile(avatar)).data);
 
         if (!/image\/(jpe?g|png|webp)/.test(mime)) {
             let req = await ___qctext(txt, q.name, avatar);
@@ -18,7 +19,7 @@ let handler = async (m, { conn, text, usedPrefix, command, isOwner }) => {
         } else {
             let img = await q.download();
             let decodedBuffer = await sharp(img).toFormat('png').toBuffer();
-            let url = await uploadFile(decodedBuffer);
+            let url = await uploadImage(decodedBuffer);
             let req = await ___qcimg(url, txt, q.name, avatar);
             let stiker = await createWebp(req, false, global.packname, global.author);
             conn.sendFile(m.chat, stiker, 'sticker.webp', '', m);
@@ -99,4 +100,17 @@ async function createWebp(req, url, packName, authorName, quality) {
         quality
     };
     return (new Sticker(req ? req : url, metadata_sticker)).toBuffer();
+}
+
+async function uploadImage(buffer) { 
+  let { ext } = await fromBuffer(buffer);
+  let bodyForm = new FormData();
+  bodyForm.append("file", buffer, "file." + ext);
+  let res = await fetch("https://file.botcahx.eu.org/api/upload.php", {
+    method: "post",
+    body: bodyForm,
+  });
+  let data = await res.json();
+  let resultUrl = data.result ? data.result.url : '';
+  return resultUrl;
 }
