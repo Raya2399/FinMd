@@ -3,6 +3,7 @@ const { Sticker } = require('wa-sticker-formatter');
 const FormData = require('form-data');
 const { fromBuffer } = require('file-type');
 const sharp = require('sharp');
+const fetch = require('node-fetch');
 
 let handler = async (m, { conn, text, usedPrefix, command, isOwner }) => {
     try {
