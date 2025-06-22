@@ -1,3 +1,4 @@
+/**
 let fetch = require('node-fetch')
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
@@ -92,3 +93,73 @@ function formatDate(dateString) {
         minute: '2-digit'
     })
 }
+**/
+// New Line
+/**
+let fetch = require('node-fetch')
+
+let handler = async (m, { conn, text, usedPrefix, command }) => {
+    if (!text) throw `*🚩 Example:* ${usedPrefix}${command} https://terabox.com/s/1Yj2okPgdFu2amhVdXNl_8g`
+    await m.reply(wait)
+    try {
+        let data = await (await fetch(`https://api.botcahx.eu.org/api/download/terabox?url=${text}&apikey=${btc}`)).json()
+        
+        if (!data.result || !data.result.result || !data.result.result.all_files || data.result.result.all_files.length === 0) {
+            throw 'No files found in the response'
+        }
+
+        let files = data.result.result.all_files
+        let msg = `乂 *T E R A B O X   D O W N L O A D E R*\n\n`
+        msg += `Found ${files.length} file(s):\n\n`
+        
+        for (let file of files) {
+            msg += ` ◦ *Name:* ${file.file_name}\n`
+            msg += ` ◦ *Size:* ${file.size}\n\n`
+        }
+       
+        await conn.sendMessage(m.chat, {
+            text: msg,
+            contextInfo: {
+                externalAdReply: {
+                    title: 'Terabox Downloader',
+                    body: `Processing ${files.length} file(s)`,
+                    thumbnailUrl: 'https://files.catbox.moe/22ycus.jpg',
+                    sourceUrl: null,
+                    mediaType: 1,
+                    renderLargerThumbnail: true
+                }
+            }
+        })
+
+        const total = files.length
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i]
+            try {
+                let queue = `*Antrian:* ${i + 1}-${total}\n`
+                await conn.sendFile(m.chat, file.download_url, file.file_name, queue, m)
+                
+                if (i === files.length - 1) {
+                    await conn.reply(m.chat, '*DONE*', m)
+                }
+                
+                if (i < files.length - 1) {
+                    await new Promise(resolve => setTimeout(resolve, 5000))
+                }
+            } catch (error) {
+                await conn.reply(m.chat, `Failed to process file: ${file.file_name}`, m)
+            }
+        }
+    } catch (error) {
+        throw eror
+    }
+}
+
+handler.help = ['teraboxdl'].map(v => v + ' <url>')
+handler.tags = ['downloader']
+handler.command = /^(teraboxdl|terabox)$/i
+handler.limit = true
+handler.premium = true
+
+module.exports = handler
+
+**/
