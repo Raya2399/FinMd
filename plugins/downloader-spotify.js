@@ -2,7 +2,8 @@ const fetch = require("node-fetch");
 
 let handler = async (m, { conn, args, usedPrefix, command }) => {
   if (!args[0]) throw `*🚩 Masukkan URL atau judul lagu!*\n\nExample:\n${usedPrefix + command} https://open.spotify.com/track/3zakx7RAwdkUQlOoQ7SJRt\n\nExample:\n${usedPrefix + command} payung teduh`;
-  if (args[0].match(/https:\/\/open.spotify.com/gi)) {
+  
+  if (args[0].match(/https:\/\/open\.spotify\.com/gi)) {
     m.reply(wait);
     try {
       const res = await fetch(`https://api.botcahx.eu.org/api/download/spotify?url=${args[0]}&apikey=${btc}`);
@@ -55,13 +56,15 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     } catch (e) {
       throw `🚩 ${eror}`;
     }
-  } else { 
+  } else {
     m.reply(wait);
     const text = args.join(" ");
     try {
       const api = await fetch(`https://api.botcahx.eu.org/api/search/spotify?query=${text}&apikey=${btc}`);
       let json = await api.json();
       let res = json.result.data;
+      if (!res || res.length === 0) throw `🚩 No results found for "${text}"`;
+      
       let teks = "";
       for (let i in res) {
         teks += `*${parseInt(i) + 1}.* *Title:* ${res[i].title}\n`;
@@ -86,6 +89,51 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
           mentions: [m.sender]
         }
       }, {});
+      
+      m.reply("_Mendownload lagu teratas..._");
+      setTimeout(async () => {
+        const topResult = res[0];
+        const { title, duration, url, popularity } = topResult;
+        const resDownload = await fetch(`https://api.botcahx.eu.org/api/download/spotify?url=${url}&apikey=${btc}`);
+        let downloadJson = await resDownload.json();
+        const { thumbnail, name } = downloadJson.result.data;
+        const { id, type } = downloadJson.result.data.artist;
+        
+        let captionvid = ` ∘ Title: ${title}\n∘ Id: ${id}\n∘ Duration: ${duration}\n∘ Type: ${type}\n∘ Popularity: ${popularity}`;
+        let pesan = await conn.sendMessage(m.chat, {
+          text: captionvid,
+          contextInfo: {
+            externalAdReply: {
+              title: "Spotify Downloader",
+              body: "",
+              thumbnailUrl: thumbnail,
+              sourceUrl: url,
+              mediaType: 1,
+              showAdAttribution: true,
+              renderLargerThumbnail: true
+            }
+          }
+        });
+        await conn.sendMessage(m.chat, {
+          audio: {
+            url: downloadJson.result.data.url
+          },
+          mimetype: 'audio/mpeg',
+          contextInfo: {
+            externalAdReply: {
+              title: title,
+              body: "",
+              thumbnailUrl: thumbnail,
+              sourceUrl: url,
+              mediaType: 1,
+              showAdAttribution: true,
+              renderLargerThumbnail: true
+            }
+          }
+        }, {
+          quoted: m
+        });
+      }, 1000);
     } catch (e) {
       throw `🚩 ${eror}`;
     }
