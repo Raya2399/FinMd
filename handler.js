@@ -1195,7 +1195,8 @@ module.exports = {
                         } finally {
                         text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!').replace('@subject', await this.getName(id)).replace('@desc', groupMetadata.desc ? groupMetadata.desc.toString() : '') :
                          (chat.sBye || this.bye || conn.bye || 'Bye, @user!')).replace('@user', '@' + user.split('@')[0])
-                            this.sendMessage(id, {
+                            await this.sendMessage(id, { text: text, contextInfo: { mentionedJid: [user] }}, { quoted: null })
+			    /**this.sendMessage(id, {
                             text: text,
                             contextInfo: {
 			    mentionedJid: [user],
@@ -1206,7 +1207,7 @@ module.exports = {
                             sourceUrl: 'https://api.botcahx.eu.org',
                             mediaType: 1,
                             renderLargerThumbnail: true 
-                            }}}, { quoted: null })
+                            }}}, { quoted: null })**/
                         }
                     }
 		}
