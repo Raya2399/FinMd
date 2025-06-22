@@ -1,4 +1,4 @@
-let handler = async (m, { conn, text, usedPrefix }) => {
+ let handler = async (m, { conn, text, usedPrefix }) => {
   if (isNaN(text)) {
     var number = text.split`@`[1];
   } else if (!isNaN(text)) {
@@ -15,8 +15,6 @@ let handler = async (m, { conn, text, usedPrefix }) => {
 
   if (!text && !m.quoted)
     return conn.reply(m.chat, `Berikan nomor, tag atau reply chat target`, m);
-  // let exists = await conn.isOnWhatsApp(number)
-  // if (exists) return conn.reply(m.chat, `*Nomor target tidak terdaftar di WhatsApp*`, m)
   if (isNaN(number)) return conn.reply(m.chat, `Nomor tidak valid!`, m);
   if (number.length > 15) return conn.reply(m.chat, `Format tidak valid!`, m);
   try {
@@ -40,8 +38,6 @@ let handler = async (m, { conn, text, usedPrefix }) => {
       );
     if (user === m.sender)
       return conn.reply(m.chat, `Tidak bisa berpacaran dengan diri sendiri`, m);
-    //if (user === conn.user.jid)
-    //return conn.reply(m.chat, `Tidak bisa berpacaran dengan bot`, m);
 
     if (typeof global.db.data.users[user] == "undefined")
       return m.reply("Tidak terdaftar di database");
@@ -80,12 +76,12 @@ let handler = async (m, { conn, text, usedPrefix }) => {
           return conn.reply(
             m.chat,
             `Kamu sudah berpacaran dengan @${
-              beb.split("@")[0]
+              user.split("@")[0]
             }\n\nsetia dong!\ndenda : ${format(denda)} (20%)`,
             m,
             {
               contextInfo: {
-                mentionedJid: [beb],
+                mentionedJid: [user],
               },
             }
           );
