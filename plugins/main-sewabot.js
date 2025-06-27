@@ -30,7 +30,7 @@ wa.me/${numberowner}
                         contextInfo: {
                             mentionedJid: [m.sender],
                             externalAdReply: {
-                                showAdAttribution: true
+                                showAdAttribution: false
                             }
                         }
                     }
