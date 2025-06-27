@@ -67,7 +67,7 @@ let handler = async (m, { conn, text, usedPrefix }) => {
                         thumbnailUrl: convert.image,
                         sourceUrl: convert.url,
                         mediaType: 1,
-                        showAdAttribution: true,
+                        showAdAttribution: false,
                         renderLargerThumbnail: true
                     }
                 }
