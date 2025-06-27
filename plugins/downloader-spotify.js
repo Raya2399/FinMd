@@ -29,7 +29,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
             thumbnailUrl: thumbnail,
             sourceUrl: args[0],
             mediaType: 1,
-            showAdAttribution: true,
+            showAdAttribution: false,
             renderLargerThumbnail: true
           }
         }
@@ -46,7 +46,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
             thumbnailUrl: thumbnail,
             sourceUrl: args[0],
             mediaType: 1,
-            showAdAttribution: true,
+            showAdAttribution: false,
             renderLargerThumbnail: true
           }
         }
@@ -80,7 +80,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
               title: `🔍 Search : ${text}`,
               mediaType: 1,
               previewType: 0,
-              showAdAttribution: true,
+              showAdAttribution: false,
               renderLargerThumbnail: true,
               thumbnailUrl: 'https://www.scdn.co/i/_global/open-graph-default.png',
               sourceUrl: ''
