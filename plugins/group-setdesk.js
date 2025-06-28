@@ -1,5 +1,6 @@
-let handler = async (m, { conn, args }) => {
- await conn.groupUpdateDescription(m.chat, `${args.join(" ")}`);
+let handler = async (m, { conn, command, usedPrefix, text }) => {
+ if (!text) throw `${usedPrefix + command} teks`
+ await conn.groupUpdateDescription(m.chat, text);
   m.reply('Sukses mengganti deskripsi group')
 }
 
