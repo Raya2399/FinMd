@@ -22,7 +22,7 @@ let handler = async (m, {
 				let paus = Math.floor(Math.random() * 2);
 				let kepiting = Math.floor(Math.random() * 27);
 
-				let imageUrl = 'https://files.catbox.moe/4xsiwo.jpg';
+				let imageUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYJHYMaM4vVzvHstniD2n_oL7L-gjfka6NSQ&s';
 				let totalCatch = nila + bawal + ikan + lele + udang + paus + kepiting;
 
 				let mcng = `•  *Hasil Mancing:*
