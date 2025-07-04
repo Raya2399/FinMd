@@ -34,7 +34,7 @@ let handler = async (m, { conn, command, usedPrefix }) => {
         }
     } else if (command === "cekmail" || command === "checkmail") {
         if (!conn.sessionsMail[m.sender]) {
-            return m.reply("⚠️ Anda belum memiliki Temp Mail!\nGunakan `${usedPrefix + command}` untuk membuatnya.");
+            return m.reply(`⚠️ Anda belum memiliki Temp Mail!\nGunakan ${usedPrefix + command} untuk membuatnya.`);
         }
 
         let { email } = conn.sessionsMail[m.sender];
