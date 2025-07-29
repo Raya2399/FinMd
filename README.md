@@ -1,6 +1,6 @@
-## Harap Dibaca Sebelum Install  
+## ⚠️Harap Dibaca Sebelum Install⚠️
 
-## Cara Memperbaiki Error @lid
+### Cara Memperbaiki Error @lid
 
 ### Langkah-langkah Perbaikan
 
@@ -21,9 +21,9 @@
    Tempelkan LID ke dalam konfigurasi sebagai berikut:
 ```
 
-global.owner = [['6282221792667', '123493211496490']]
-global.mods  = [['6282221792667', '123493211496490']]
-global.prems = [['6282221792667', '123493211496490']]
+global.owner = ['6282221792667', '123493211496490']
+global.mods  = ['6282221792667', '123493211496490']
+global.prems = ['6282221792667', '123493211496490']
 
 ```
 
