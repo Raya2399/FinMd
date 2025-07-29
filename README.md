@@ -3,30 +3,46 @@
 ## Cara Memperbaiki Error @lid
 
 ### Langkah-langkah Perbaikan
+
 1. **Perbarui file `handler.js`**  
    Ganti atau perbarui file `handler.js` dengan versi terbaru dari tautan berikut:  
-   [handler.js](https://github.com/BOTCAHX/RTXZY-MD/blob/pro/handler.js)
+   https://github.com/BOTCAHX/RTXZY-MD/blob/pro/handler.js
 
 2. **Tambahkan file `tools-getlid.js` ke folder plugin**  
    Unduh dan tambahkan file berikut ke dalam folder `plugins/tools-getlid.js`:  
-   [plugins/tools-getlid.js](https://github.com/BOTCAHX/RTXZY-MD/blob/pro/plugins/tools-getlid.js)
+   https://github.com/BOTCAHX/RTXZY-MD/blob/pro/plugins/tools-getlid.js
 
-3. Untuk video tutorial lengkap nya bisa dilihat Video YouTube berikut ini
+3. **Cara Mendapatkan LID**  
+   - Buat grup WhatsApp baru.
+   - Kirim perintah `.getlid` ke grup tersebut.
+   - Bot akan mengirimkan LID target, salin LID tersebut.
 
-https://youtube.com/shorts/C5LgoJTxqwM?feature=share 
+4. **Tambahkan LID ke Konfigurasi Bot**  
+   Tempelkan LID ke dalam konfigurasi sebagai berikut:
+```
+
+global.owner = [['6282221792667', '123493211496490']]
+global.mods  = [['6282221792667', '123493211496490']]
+global.prems = [['6282221792667', '123493211496490']]
+
+```
+
+5. **Lihat Video Tutorial Lengkap**  
+Jika masih bingung, kamu bisa menonton panduan lengkap melalui tautan berikut:  
+https://youtube.com/shorts/C5LgoJTxqwM?feature=share
 
 ---
 
 ### Penjelasan Masalah @lid
-Beberapa gejala error yang terjadi karena masalah ini antara lain:
+
+Beberapa gejala error yang disebabkan oleh masalah `@lid` ini antara lain:
 - Bot **tidak merespons** pesan di dalam grup.
 - Bot **tidak mendeteksi nomor owner**, meskipun sudah tercantum di `global.owner`.
-- Bot **tidak mengenali nomor admin** dan tidak menjalankan fitur grup lain yang memerlukan akses admin atau owner.
+- Bot **tidak mengenali nomor admin** dan tidak menjalankan fitur grup lainnya yang membutuhkan izin admin atau owner.
 
 ---
 
-Jika kamu mengalami masalah di atas, silakan ikuti langkah perbaikan yang telah disebutkan.
-
+Jika kamu mengalami salah satu dari masalah di atas, silakan ikuti langkah-langkah perbaikan yang telah dijelaskan.
 
 **Informasi Pembaruan:**  
 ----  
