@@ -1,4 +1,4 @@
-### ⚠️Harap Dibaca Sebelum Install⚠️
+### Harap Dibaca Sebelum Install!
 
 ### Cara Memperbaiki Error @lid
 
