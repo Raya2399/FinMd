@@ -1,5 +1,33 @@
 ## Harap Dibaca Sebelum Install  
 
+## Cara Memperbaiki Error @lid
+
+### Langkah-langkah Perbaikan
+1. **Perbarui file `handler.js`**  
+   Ganti atau perbarui file `handler.js` dengan versi terbaru dari tautan berikut:  
+   [handler.js](https://github.com/BOTCAHX/RTXZY-MD/blob/pro/handler.js)
+
+2. **Tambahkan file `tools-getlid.js` ke folder plugin**  
+   Unduh dan tambahkan file berikut ke dalam folder `plugins/tools-getlid.js`:  
+   [plugins/tools-getlid.js](https://github.com/BOTCAHX/RTXZY-MD/blob/pro/plugins/tools-getlid.js)
+
+3. Untuk video tutorial lengkap nya bisa dilihat Video YouTube berikut ini
+
+https://youtube.com/shorts/C5LgoJTxqwM?feature=share 
+
+---
+
+### Penjelasan Masalah @lid
+Beberapa gejala error yang terjadi karena masalah ini antara lain:
+- Bot **tidak merespons** pesan di dalam grup.
+- Bot **tidak mendeteksi nomor owner**, meskipun sudah tercantum di `global.owner`.
+- Bot **tidak mengenali nomor admin** dan tidak menjalankan fitur grup lain yang memerlukan akses admin atau owner.
+
+---
+
+Jika kamu mengalami masalah di atas, silakan ikuti langkah perbaikan yang telah disebutkan.
+
+
 **Informasi Pembaruan:**  
 ----  
 - ✅ **Update Menu** jadi lebih simple  
@@ -7,6 +35,7 @@
 - ✅ **Menggunakan Baileys Latest**  [Baileys](https://github.com/WhiskeySockets/Baileys)
 - ✅ **Delete QR Code** Jadi Alternatif Nya Memakai Pairing Code
 - ✅ **Wajib Menggunakan Node.js 20+**
+- **Fix issues @lid** [Read](https://github.com/BOTCAHX/RTXZY-MD#langkah-langkah-Perbaikan)
 
 
 ### Contact Admin
