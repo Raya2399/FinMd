@@ -1,8 +1,8 @@
-global.owner = ['62895331520602']  
-global.mods = ['62895331520602'] 
-global.prems = ['62895331520602']
+global.owner = [['6282221792667', '123493211496490']]
+global.mods  = [['6282221792667', '123493211496490']]
+global.prems = [['6282221792667', '123493211496490']]
 global.nameowner = 'Tio'
-global.numberowner = '62895331520602' 
+global.numberowner = '6282221792667' 
 global.mail = 'support@tioprm.eu.org' 
 global.gc = 'https://chat.whatsapp.com/I5RpePh2b5u37OyFjzCNTr'
 global.instagram = 'https://instagram.com/prm2.0'
