@@ -1,8 +1,8 @@
 ### Harap Dibaca Sebelum Install!
 
-### Cara Memperbaiki Error @lid
+##### Cara Memperbaiki Error @lid
 
-### Langkah-langkah Perbaikan
+###### Langkah-langkah Perbaikan
 
 1. **Pastikan file `handler.js` sudah terbaru!**
 
@@ -22,7 +22,7 @@ _Jika mendownload script terbaru tidak usah ubah file-file di atas cukup clone a
 5. **Cara Mendapatkan LID (Penting untuk Dibaca!)**  
    - Buat grup WhatsApp baru **atau** kirim perintah di chat pribadi dengan bot.  
    - Ketik perintah `.getlid`, lalu kirim ke grup atau chat tersebut.  
-   - Bot akan membalas dengan LID target, contohnya seperti berikut:
+   - Bot akan membalas dengan `LID target`, contohnya seperti berikut:
 
      ```
      123493211496490@lid
