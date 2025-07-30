@@ -1,17 +1,17 @@
-global.owner = ['6282221792667', '123493211496490']
-global.mods  = ['6282221792667', '123493211496490']
-global.prems = ['6282221792667', '123493211496490']
-global.nameowner = 'Tio'
-global.numberowner = '6282221792667' 
-global.mail = 'support@tioprm.eu.org' 
-global.gc = 'https://chat.whatsapp.com/I5RpePh2b5u37OyFjzCNTr'
-global.instagram = 'https://instagram.com/prm2.0'
-global.wm = '© Tio'
-global.wait = '_*Tunggu sedang di proses...*_'
-global.eror = '_*Server Error*_'
-global.stiker_wait = '*⫹⫺ Stiker sedang dibuat...*'
-global.packname = 'Made With'
-global.author = 'Bot WhatsApp'
+global.owner = ['6282221792667', '123493211496490'] // wajib di isi tidak boleh kosong
+global.mods  = ['6282221792667', '123493211496490'] // wajib di isi tidak boleh kosong
+global.prems = ['6282221792667', '123493211496490'] // wajib di isi tidak boleh kosong
+global.nameowner = 'Tio' // wajib di isi tidak boleh kosong
+global.numberowner = '6282221792667' // wajib di isi tidak boleh kosong
+global.mail = 'support@tioprm.eu.org' // wajib di isi tidak boleh kosong
+global.gc = 'https://chat.whatsapp.com/I5RpePh2b5u37OyFjzCNTr' // wajib di isi tidak boleh kosong
+global.instagram = 'https://instagram.com/prm2.0' // wajib di isi tidak boleh kosong
+global.wm = '© Tio' // isi nama bot atau nama kalian
+global.wait = '_*Tunggu sedang di proses...*_' // ini pesan simulasi loading
+global.eror = '_*Server Error*_' // ini pesan saat terjadi kesalahan
+global.stiker_wait = '*⫹⫺ Stiker sedang dibuat...*' // ini pesan simulasi saat loading pembuatan sticker
+global.packname = 'Made With' // watermark stikcker packname
+global.author = 'Bot WhatsApp' // watermark stikcker author
 global.maxwarn = '5' // Peringatan maksimum Warn
 
 global.autobio = false // Set true/false untuk mengaktifkan atau mematikan autobio (default: false)
@@ -30,12 +30,12 @@ global.btc = 'YOUR_APIKEY_HERE'
 global.lann = 'YOUR_APIKEY_HERE'
 //Daftar https://api.betabotz.eu.org 
 
-//Gausah diganti atau di ubah
+//Tidak boleh diganti atau di ubah
 global.APIs = {   
   btc: 'https://api.botcahx.eu.org'
 }
 
-//Gausah diganti atau di ubah
+//Tidak boleh diganti atau di ubah
 global.APIKeys = { 
   'https://api.botcahx.eu.org': global.btc
 }
