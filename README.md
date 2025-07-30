@@ -4,20 +4,38 @@
 
 ### Langkah-langkah Perbaikan
 
-1. **Perbarui file `handler.js`**  
-   Ganti atau perbarui file `handler.js` dengan versi terbaru dari tautan berikut:  
+1. **Pastikan file `handler.js` sudah terbaru!**
+
+
+   Samakan file `handler.js` dengan versi terbaru dari file berikut:  
    https://github.com/BOTCAHX/RTXZY-MD/blob/pro/handler.js
 
-2. **Tambahkan file `tools-getlid.js` ke folder plugin**  
-   Unduh dan tambahkan file berikut ke dalam folder `plugins/tools-getlid.js`:  
+3. **Pastikan file `plugins/tools-getlid.js` sudah terbaru!**
+
+
+   Samakan file `plugins/tools-getlid.js` dengan versi terbaru dari file berikut:  
    https://github.com/BOTCAHX/RTXZY-MD/blob/pro/plugins/tools-getlid.js
+   
+#### Catatan
+_Jika mendownload script terbaru tidak usah ubah file-file di atas cukup clone atau Download langsung dan ikuti step berikutnya saja._
 
-3. **Cara Mendapatkan LID**  
-   - Buat grup WhatsApp baru.
-   - Kirim perintah `.getlid` ke grup tersebut.
-   - Bot akan mengirimkan LID target, salin LID tersebut.
+5. **Cara Mendapatkan LID (Penting untuk Dibaca!)**  
+   - Buat grup WhatsApp baru **atau** kirim perintah di chat pribadi dengan bot.  
+   - Ketik perintah `.getlid`, lalu kirim ke grup atau chat tersebut.  
+   - Bot akan membalas dengan LID target, contohnya seperti berikut:
 
-4. **Tambahkan LID ke Konfigurasi Bot**  
+     ```
+     123493211496490@lid
+     ```
+
+   - Salin **hanya bagian ID-nya saja**, tanpa `@lid`,seperti ini:
+
+     ```
+     123493211496490
+     ```
+
+
+6. **Tambahkan LID ke Konfigurasi Bot**  
    Tempelkan LID ke dalam konfigurasi sebagai berikut:
 ```
 
