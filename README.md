@@ -46,8 +46,8 @@ global.prems = ['6282221792667', '123493211496490']
 ```
 
 5. **Lihat Video Tutorial Lengkap**  
-Jika masih bingung, kamu bisa menonton panduan lengkap melalui tautan berikut:  
-https://youtube.com/shorts/C5LgoJTxqwM?feature=share
+Jika masih bingung, kamu bisa menonton panduan lengkap melalui tautan berikut:
+https://youtube.com/playlist?list=PLuQT2lE0wOYQNhk2E8JAerojcZj8ckMYs&si=kehl9mWEVmctVms0
 
 ---
 
