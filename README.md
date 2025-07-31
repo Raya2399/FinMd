@@ -4,20 +4,25 @@
 
 ###### Langkah-langkah Perbaikan
 
-1. **Pastikan file `handler.js` sudah terbaru!**
-
-
+1. **Pastikan file `handler.js` sudah terbaru!**  
    Samakan file `handler.js` dengan versi terbaru dari file berikut:  
-   https://github.com/BOTCAHX/RTXZY-MD/blob/pro/handler.js
+   [`handler.js`](https://github.com/BOTCAHX/RTXZY-MD/blob/pro/handler.js)
 
-3. **Pastikan file `plugins/tools-getlid.js` sudah terbaru!**
-
-
+2. **Pastikan file `plugins/tools-getlid.js` sudah terbaru!**  
    Samakan file `plugins/tools-getlid.js` dengan versi terbaru dari file berikut:  
-   https://github.com/BOTCAHX/RTXZY-MD/blob/pro/plugins/tools-getlid.js
-   
+   [`tools-getlid.js`](https://github.com/BOTCAHX/RTXZY-MD/blob/pro/plugins/tools-getlid.js)
+
+3. **Pastikan file `lib/simple.js` sudah terbaru!**  
+   Samakan file `lib/simple.js` dengan versi terbaru dari file berikut:  
+   [`simple.js`](https://github.com/BOTCAHX/RTXZY-MD/blob/pro/lib/simple.js)
+
+4. **Pastikan file `lib/baileys.js` sudah terbaru!**  
+   Samakan file `lib/baileys.js` dengan versi terbaru dari file berikut:  
+   [`baileys.js`](https://github.com/BOTCAHX/RTXZY-MD/blob/pro/lib/baileys.js)
+
 #### Catatan
-_Jika mendownload script terbaru tidak usah ubah file-file di atas cukup clone atau Download langsung dan ikuti step berikutnya saja._
+_Jika kamu sudah mendownload script versi terbaru, **tidak perlu mengubah file-file di atas secara manual.**  
+Cukup clone atau download ulang dan langsung ikuti langkah-langkah berikutnya._
 
 5. **Cara Mendapatkan LID (Penting untuk Dibaca!)**  
    - Buat grup WhatsApp baru **atau** kirim perintah di chat pribadi dengan bot.  
@@ -45,8 +50,9 @@ global.prems = ['6282221792667', '123493211496490']
 
 ```
 
-5. **Lihat Video Tutorial Lengkap**  
+7. **Lihat Video Tutorial Lengkap**  
 Jika masih bingung, kamu bisa menonton panduan lengkap melalui tautan berikut:
+
 https://youtube.com/playlist?list=PLuQT2lE0wOYQNhk2E8JAerojcZj8ckMYs&si=kehl9mWEVmctVms0
 
 ---
