@@ -30,13 +30,13 @@ Cukup clone atau download ulang dan langsung ikuti langkah-langkah berikutnya._
    - Bot akan membalas dengan `LID target`, contohnya seperti berikut:
 
      ```
-     123493211496490@lid
+     275664439611636@lid
      ```
 
    - Salin **hanya bagian ID-nya saja**, tanpa `@lid`,seperti ini:
 
      ```
-     123493211496490
+     275664439611636
      ```
 
 
@@ -44,9 +44,9 @@ Cukup clone atau download ulang dan langsung ikuti langkah-langkah berikutnya._
    Tempelkan LID ke dalam konfigurasi sebagai berikut:
 ```
 
-global.owner = ['6282221792667', '123493211496490']
-global.mods  = ['6282221792667', '123493211496490']
-global.prems = ['6282221792667', '123493211496490']
+global.owner = ['62895331520602', '275664439611636']
+global.mods  = ['62895331520602', '275664439611636']
+global.prems = ['62895331520602', '275664439611636']
 
 ```
 
