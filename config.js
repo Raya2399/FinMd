@@ -1,8 +1,8 @@
-global.owner = ['6282221792667', '123493211496490'] // wajib di isi tidak boleh kosong
-global.mods  = ['6282221792667', '123493211496490'] // wajib di isi tidak boleh kosong
-global.prems = ['6282221792667', '123493211496490'] // wajib di isi tidak boleh kosong
+global.owner = ['62895331520602', '275664439611636'] // wajib di isi tidak boleh kosong
+global.mods  = ['62895331520602', '275664439611636'] // wajib di isi tidak boleh kosong
+global.prems = ['62895331520602', '275664439611636'] // wajib di isi tidak boleh kosong
 global.nameowner = 'Tio' // wajib di isi tidak boleh kosong
-global.numberowner = '6282221792667' // wajib di isi tidak boleh kosong
+global.numberowner = '62895331520602' // wajib di isi tidak boleh kosong
 global.mail = 'support@tioprm.eu.org' // wajib di isi tidak boleh kosong
 global.gc = 'https://chat.whatsapp.com/I5RpePh2b5u37OyFjzCNTr' // wajib di isi tidak boleh kosong
 global.instagram = 'https://instagram.com/prm2.0' // wajib di isi tidak boleh kosong
@@ -22,15 +22,15 @@ global.gcspam = false // Set true/false untuk menutup grup ketika spam (default:
 
 // APIKEY INI WAJIB DI ISI! //
 global.btc = 'YOUR_APIKEY_HERE' 
-//Daftar terlebih dahulu https://api.botcahx.eu.org
+// Daftar terlebih dahulu https://api.botcahx.eu.org
 
 
+// OPSIONAL 
+// Jika ingin menggunakan api BETABOTZ sekaligus buat fitur dan juga daftar dan isi apikey di bawah ini. 
+// global.lann = 'YOUR_APIKEY_HERE'
+// Daftar https://api.betabotz.eu.org 
 
-// INI HANYA OPTIONAL SAJA BOLEH DI ISI BOLEH JUGA ENGGA //
-global.lann = 'YOUR_APIKEY_HERE'
-//Daftar https://api.betabotz.eu.org 
-
-//Tidak boleh diganti atau di ubah
+// Tidak boleh diganti atau di ubah
 global.APIs = {   
   btc: 'https://api.botcahx.eu.org'
 }
