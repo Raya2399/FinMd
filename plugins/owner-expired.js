@@ -6,7 +6,8 @@ let handler = async (m, { conn, command, usedPrefix, text, participants }) => {
     if (!text) {
     const list = groups.map((group, index) => `*${index + 1}.* ${group.subject}`).join('\n');
     const teks = '`L I S T - G R O U P - J O I N I N G`\n\n'
-    conn.reply(m.chat, `${teks}`+`${list}`, m);
+    let _info = `Perintah salah, contoh: ${usedPrefix + command} <nomor grup>|<jumlah hari>`
+    conn.reply(m.chat, `${teks}`+`${list}\n\n${_info}`, m);
     } else if (id && /^\d+$/.test(id)) {
     const index = parseInt(id) - 1;
     if (index >= 0 && index < groups.length) {
