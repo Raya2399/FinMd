@@ -88,7 +88,8 @@ const allTags = {
 const defaultMenu = {
     before: `
 Hi %name
-I am an automated system (WhatsApp Bot) that can help to do something, search and get data / information only through WhatsApp.
+Saya Fin MultiDevice, asisten WhatsApp yang dikembangkan oleh Alfin Phoenix.
+Dalam hal ini, privasi Anda adalah prioritas kami. Tanda read pada waktu tertentu di bot hanyalah proses sistem agar chat tidak menumpuk, bukan dibaca manusia.
 
 ◦ *Library:* Baileys
 ◦ *Function:* Assistant
@@ -171,8 +172,8 @@ let handler = async (m, { conn, usedPrefix: _p, args = [], command }) => {
                         mediaType: 1,
                         previewType: 0,
                         renderLargerThumbnail: true,
-                        thumbnailUrl: 'https://telegra.ph/file/3a34bfa58714bdef500d9.jpg',
-                        sourceUrl: 'https://whatsapp.com/channel/0029Va8ZH8fFXUuc69TGVw1q'
+                        thumbnailUrl: 'https://image2url.com/images/1755274480773-da0ca085-81eb-40b9-98c2-d8abff9150c3.jpg',
+                        sourceUrl: 'https://whatsapp.com/channel/0029VaxV1qnDOQIdnqVmBi3M'
                     }
                 }, 
                 mentions: [m.sender]
@@ -244,8 +245,8 @@ let handler = async (m, { conn, usedPrefix: _p, args = [], command }) => {
                         mediaType: 1,
                         previewType: 0,
                         renderLargerThumbnail: true,
-                        thumbnailUrl: 'https://telegra.ph/file/3a34bfa58714bdef500d9.jpg',
-                        sourceUrl: 'https://whatsapp.com/channel/0029Va8ZH8fFXUuc69TGVw1q'
+                        thumbnailUrl: 'https://image2url.com/images/1755274480773-da0ca085-81eb-40b9-98c2-d8abff9150c3.jpg',
+                        sourceUrl: 'https://whatsapp.com/channel/0029VaxV1qnDOQIdnqVmBi3M'
                     }
                 }, 
                 mentions: [m.sender]
