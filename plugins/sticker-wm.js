@@ -39,5 +39,6 @@ handler.help = ['wm', 'watermark']
 handler.tags = ['sticker']
 handler.command = /^wm|watermark?$/i
 handler.limit = true;
+handler.premium = true;
 
 module.exports = handler
