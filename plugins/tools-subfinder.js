@@ -11,8 +11,12 @@ let handler = async (m, { text, usedPrefix, command }) => {
     .then(response => {
       if (response.status && response.code === 200) {
         let subdomains = response.result;
-        let message = `Subdomain untuk ${text}:\n\n` + subdomains.map((sub, i) => `${i + 1}. ${sub}`).join('\n');
-        m.reply(message);
+        if (subdomains.length > 0) {
+          let message = `Subdomain untuk ${text}:\n\n` + subdomains.map((sub, i) => `${i + 1}. ${sub}`).join('\n');
+          m.reply(message);
+        } else {
+          m.reply('Tidak ditemukan subdomain untuk domain ini.');
+        }
       } else {
         m.reply('Terjadi kesalahan saat mengambil data subdomain. Silakan coba lagi nanti.');
       }
