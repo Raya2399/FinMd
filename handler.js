@@ -16,7 +16,7 @@ module.exports = {
         if (!m) return
         //console.log(JSON.stringify(m, null, 4))
         try {
-            m = await simple.smsg(this, m) || m
+            m = simple.smsg(this, m) || m
             if (!m) return
             // console.log(m)
             m.exp = 0
@@ -933,38 +933,24 @@ module.exports = {
                 }
             }
         //if (m.id.startsWith('BAE5') && m.id.length === 16 || m.isBaileys && m.fromMe) return
-	if (m.id.startsWith('3EB0') || (m.id.startsWith('BAE5') && m.id.length === 16 || m.isBaileys && m.fromMe)) return;	
+	        if (m.id.startsWith('3EB0') || (m.id.startsWith('BAE5') && m.id.length === 16 || m.isBaileys && m.fromMe)) return;	
             m.exp += Math.ceil(Math.random() * 10)
 
             let usedPrefix
             let _user = global.db.data && global.db.data.users && global.db.data.users[m.sender]
 
-            const detectwhat = m.sender.includes('@lid') ? '@lid' : '@s.whatsapp.net';
-            const ownerNumbers = global.owner.map(v => v.replace(/[^0-9]/g, '')); 
-            const mappedOwners = ownerNumbers.map(v => v + detectwhat); 
-            console.log('DEBUG: mappedOwners (JID format for comparison):', mappedOwners);
-            const isROwner = mappedOwners.includes(m.sender);
-            const isOwner = isROwner || m.fromMe
-            const isMods = isROwner || global.mods.map(v => v.replace(/[^0-9]/g, '') + detectwhat).includes(m.sender)
-            const isPrems = isROwner || global.prems.map(v => v.replace(/[^0-9]/g, '') + detectwhat).includes(m.sender) || (db.data.users[m.sender].premiumTime > 0 || db.data.users[m.sender].premium === true);           
-            async function getLidFromJid(id, conn) {
-                if (id.endsWith('@lid')) return id
-                const res = await conn.onWhatsApp(id).catch(() => [])
-                return res[0]?.lid || id
-            }   
-            global.getLidFromJid = getLidFromJid;
-            const senderLid = await getLidFromJid(m.sender, this)
-            const botLid = await getLidFromJid(this.user.jid, this)
-            const senderJid = m.sender
-            const botJid = this.user.jid
-            const groupMetadata = (m.isGroup ? (conn.chats[m.chat] || {}).metadata : {}) || {}
-            const participants = m.isGroup ? (groupMetadata.participants || []) : []
-            const user = participants.find(p => p.id === senderLid || p.id === senderJid) || {}
-            const bot = participants.find(p => p.id === botLid || p.id === botJid) || {}
-            const isRAdmin = user?.admin === "superadmin" || false
-            const isAdmin = isRAdmin || user?.admin === "admin" || false
-            const isBotAdmin = !!bot?.admin || false
-
+            let isROwner = [global.conn.user.jid, ...global.owner].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
+            let isOwner = isROwner || m.fromMe
+            let isMods = isOwner || global.mods.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
+            let isPrems = isROwner || (db.data.users[m.sender].premiumTime > 0 || db.data.users[m.sender].premium)
+           
+        const groupMetadata = (m.isGroup ? (conn.chats[m.chat] || {}).metadata || (await this.groupMetadata(m.chat).catch((_) => null)) : {}) || {};
+		const participants = (m.isGroup ? groupMetadata.participants : []) || [];
+		const user = (m.isGroup ? participants.find((u) => conn.getJid(u.id) === m.sender) : {}) || {}; // User Data
+		const bot = (m.isGroup ? participants.find((u) => conn.getJid(u.id) == this.user.jid) : {}) || {}; // Your Data
+		const isRAdmin = user?.admin == 'superadmin' || false;
+		const isAdmin = isRAdmin || user?.admin == 'admin' || false; // Is User Admin?
+		const isBotAdmin = bot?.admin || false; // Are you Admin?
             for (let name in global.plugins) {
                 let plugin = global.plugins[name]
                 if (!plugin) continue
@@ -1198,36 +1184,53 @@ module.exports = {
         switch (action) {
         case 'add':
         case 'remove':
-		case 'leave':
-		case 'invite':
-		case 'invite_v4':
-                if (chat.welcome) {
-                    let groupMetadata = await this.groupMetadata(id) || (conn.chats[id] || {}).metadata
-                    for (let user of participants) {
-                        let pp = 'https://telegra.ph/file/70e8de9b1879568954f09.jpg'
-                        try {
-                             pp = await this.profilePictureUrl(user, 'image')
-                        } catch (e) {
-                        } finally {
-                        text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!').replace('@subject', await this.getName(id)).replace('@desc', groupMetadata.desc ? groupMetadata.desc.toString() : '') :
-                         (chat.sBye || this.bye || conn.bye || 'Bye, @user!')).replace('@user', '@' + user.split('@')[0])
-                            await this.sendMessage(id, { text: text, contextInfo: { mentionedJid: [user] }}, { quoted: null })
-			    /**this.sendMessage(id, {
-                            text: text,
-                            contextInfo: {
-			    mentionedJid: [user],
-                            externalAdReply: {  
-                            title: action === 'add' ? 'Selamat Datang' : 'Selamat tinggal',
-                            body: global.wm,
-                            thumbnailUrl: pp,
-                            sourceUrl: 'https://api.botcahx.eu.org',
-                            mediaType: 1,
-                            renderLargerThumbnail: true 
-                            }}}, { quoted: null })**/
+        case 'leave':
+        case 'invite':
+        case 'invite_v4':
+            if (chat.welcome) {
+                let groupMetadata = await this.groupMetadata(id)
+                if (!groupMetadata) break
+
+                for (let user of participants) {
+                    let jid = user?.phoneNumber || user?.jid || user?.id || user
+                    if (!jid || !jid.includes('@s.whatsapp.net')) continue
+
+                    let pp = 'https://telegra.ph/file/70e8de9b1879568954f09.jpg'
+                    try {
+                        pp = await this.profilePictureUrl(jid, 'image')
+                    } catch (e) {}
+
+                    const isAdd = ['add', 'invite', 'invite_v4'].includes(action)
+
+                    let text = (isAdd
+                        ? (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!')
+                        : (chat.sBye || this.bye || conn.bye || 'Bye, @user!'))
+                        .replace('@subject', groupMetadata.subject || 'this group')
+                        .replace('@desc', groupMetadata.desc?.toString() || '')
+                        .replace('@user', '@' + jid.split('@')[0])
+                    await this.sendMessage(id, {
+                        text: text,
+                        mentions: [jid]
+                    })
+                    /*
+                    await this.sendMessage(id, {
+                        text: text,
+                        mentions: [jid],
+                        contextInfo: {
+                            externalAdReply: {
+                                title: isAdd ? 'Selamat Datang' : 'Selamat Tinggal',
+                                body: global.wm || 'Bot WhatsApp',
+                                thumbnailUrl: pp,
+                                sourceUrl: 'https://api.botcahx.eu.org',
+                                mediaType: 1,
+                                renderLargerThumbnail: true
+                            }
                         }
-                    }
-		}
-                break                    
+                    })
+ */
+                }
+            }
+            break            
             case 'promote':
                 text = (chat.sPromote || this.spromote || conn.spromote || '@user ```is now Admin```')
             case 'demote':
@@ -1242,7 +1245,7 @@ module.exports = {
         }
     },
     async delete({ remoteJid, fromMe, id, participant }) {
-        /*if (fromMe) return
+        if (fromMe) return
         let chats = Object.entries(conn.chats).find(([user, data]) => data.messages && data.messages[id])
         if (!chats) return
         let msg = JSON.parse(chats[1].messages[id])
@@ -1255,7 +1258,7 @@ Untuk mematikan fitur ini, ketik
 `.trim(), msg, {
             mentions: [participant]
         })
-        this.copyNForward(msg.key.remoteJid, msg).catch(e => console.log(e, msg))*/
+        this.copyNForward(msg.key.remoteJid, msg).catch(e => console.log(e, msg))
     }
 }
 
