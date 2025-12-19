@@ -115,7 +115,11 @@ exports.before = async function (m) {
         }
     };
     
-    const currentTime = m.messageTimestamp.toNumber();
+    // --- BAGIAN YANG DIPERBAIKI (Baris 118-120) ---
+    // Mengecek apakah messageTimestamp angka atau object Long, lalu dikali 1000 agar jadi milidetik (sesuai logic Date.now)
+    let timestamp = (typeof m.messageTimestamp === 'number' ? m.messageTimestamp : m.messageTimestamp.toNumber());
+    const currentTime = timestamp * 1000; 
+    // ----------------------------------------------
     
     if (m.sender in this.spam) {
         const timeSinceLastSpam = currentTime - this.spam[m.sender].lastspam;
