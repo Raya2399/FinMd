@@ -1,44 +1,40 @@
-global.owner = ['6281345407953']  
-global.mods = ['6281345407953'] 
-global.prems = ['6281345407953']
-global.nameowner = 'Fin Phoenix'
-global.numberowner = '6281345407953' 
-global.mail = 'phoenixalfin@gmail.com' 
-global.gc = 'https://chat.whatsapp.com/DFaUu3jMsV5Eg3V1HBEBWx'
-global.instagram = 'https://instagram.com/al_vin.233'
-global.wm = '© Fin Md'
-global.wait = '_*Tunggu sedang di proses...*_'
-global.eror = '_*Server Error*_'
-global.stiker_wait = '*⫹⫺ Stiker sedang dibuat...*'
-global.maxwarn = '3' // Peringatan maksimum Warn
-global.chcreator = 'https://whatsapp.com/channel/0029VaxV1qnDOQIdnqVmBi3M'
-global.gccreator = 'https://chat.whatsapp.com/DFaUu3jMsV5Eg3V1HBEBWx'
-global.packname = 'Fin Md By Fin Phoenix'
+global.owner = ['6281345407953'] // wajib di isi tidak boleh kosong
+global.mods  = ['6281345407953'] // wajib di isi tidak boleh kosong
+global.prems = ['6281345407953'] // wajib di isi tidak boleh kosong
+global.nameowner = 'Fin Phoenix' // wajib di isi tidak boleh kosong
+global.numberowner = '6281345407953' // wajib di isi tidak boleh kosong
+global.mail = 'phoenixalfin@gmail.com' // wajib di isi tidak boleh kosong
+global.gc = 'https://chat.whatsapp.com/DFaUu3jMsV5Eg3V1HBEBWx' // wajib di isi tidak boleh kosong
+global.instagram = 'https://instagram.com/al_vin.233' // wajib di isi tidak boleh kosong
+global.wm = '© Fin Md' // isi nama bot atau nama kalian
+global.wait = '_*Tunggu sedang di proses...*_' // ini pesan simulasi loading
+global.eror = '_*Server Error*_' // ini pesan saat terjadi kesalahan
+global.stiker_wait = '*⫹⫺ Stiker sedang dibuat...*' // ini pesan simulasi saat loading pembuatan sticker
+global.packname = 'Fin Md By Fin Phoenix' // watermark stikcker packname
 global.author = 'Tiktok : @alvin_ch1\nIg : @al_vin.233\nFb : Alfin Phoenix Altairs' // watermark stikcker author
+global.maxwarn = '3' // Peringatan maksimum Warn
 
 global.autobio = false // Set true/false untuk mengaktifkan atau mematikan autobio (default: false)
-global.antiporn = true // Set true/false untuk Auto delete pesan porno (bot harus admin) (default: true)
-global.spam = true // Set true/false untuk anti spam (default: true)
+global.antiporn = false // Set true/false untuk Auto delete pesan porno (bot harus admin) (default: false)
+global.spam = false // Set true/false untuk anti spam (default: false)
 global.gcspam = false // Set true/false untuk menutup grup ketika spam (default: false)
     
 
 // APIKEY INI WAJIB DI ISI! //
-global.btc = 'alfinphoenixaltair' 
+global.btc = 'alfinphoenixaltair'
+// Daftar terlebih dahulu https://api.botcahx.eu.org
+    
+// AKSESKEY INI DI ISI JIKA DIPERLUKAN (e.g suno ai (ai music ) & fitur prem lainnya//
 global.aksesKey = 'alfinphoenix'
-//Daftar terlebih dahulu https://api.botcahx.eu.org
+// Daftar terlebih dahulu https://api.botcahx.eu.org
 
 
-
-// INI HANYA OPTIONAL SAJA BOLEH DI ISI BOLEH JUGA ENGGA //
-global.lann = 'Btz-mNyRM'
-//Daftar https://api.betabotz.eu.org 
-
-//Gausah diganti atau di ubah
+// Tidak boleh diganti atau di ubah
 global.APIs = {   
   btc: 'https://api.botcahx.eu.org'
 }
 
-//Gausah diganti atau di ubah
+//Tidak boleh diganti atau di ubah
 global.APIKeys = { 
   'https://api.botcahx.eu.org': global.btc
 }
