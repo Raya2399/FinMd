@@ -1,6 +1,6 @@
 {
     "name": "rtxzy",
-    "version": "8.0.2",
+    "version": "8.0.3",
     "description": "Lightweight WhatsApp Bot",
     "depecrated": false,
     "main": "index.js",
@@ -39,7 +39,7 @@
     },
     "license": "MIT",
     "dependencies": {
-        "@adiwajshing/baileys": "npm:baileys@6.7.21",
+        "@adiwajshing/baileys": "npm:baileys",
         "@adiwajshing/keyed-db": "^0.2.4",
         "@vitalets/google-translate-api": "^9.0.0",
         "javascript-obfuscator": "^4.0.2",
@@ -60,6 +60,7 @@
         "jimp": "0.16.13",
         "lodash": "^4.17.21",
         "lowdb": "^2.1.0",
+        "lru-cache": "^11.2.4",
         "link-preview-js": "^3.0.4",
         "moment-timezone": "^0.5.37",
         "mongoose": "^6.0.14",
