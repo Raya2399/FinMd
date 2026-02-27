@@ -840,6 +840,8 @@ module.exports = {
                 if (!('antilinktt' in chat)) chat.antilinktt = false
                 if (!('antilinkttnokick' in chat)) chat.antilinkttnokick = false
                 if (!('antibot' in chat)) chat.antibot = false
+                if (!("rpg" in chat)) chat.rpg = false;
+                if (!("nsfw" in chat)) chat.nsfw = false;
             } else global.db.data.chats[m.chat] = {
                 isBanned: false,
                 welcome: true,
@@ -858,7 +860,7 @@ module.exports = {
                 antiSticker: false, 
                 antiStickernokick: false, 
                 viewonce: false,
-                antiToxic: true,
+                antiToxic: false,
                 antilinkig: false, 
                 antilinkignokick: false, 
                 antilinkyt: false, 
@@ -876,7 +878,8 @@ module.exports = {
                 antilinktt: false, 
                 antilinkttnokick: false, 
                 antibot: false, 
-                rpg: false, 
+                rpg: false,
+                
             }
             let memgc = global.db.data.chats[m.chat]?.memgc?.[m.sender];
             if (typeof memgc !== 'object' || memgc === null) {
@@ -951,13 +954,23 @@ module.exports = {
             let isMods = isOwner || global.mods.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
             let isPrems = isROwner || (db.data.users[m.sender].premiumTime > 0 || db.data.users[m.sender].premium)
            
+            // const groupMetadata = (m.isGroup ? (conn.chats[m.chat] || {}).metadata || (await this.groupMetadata(m.chat).catch((_) => null)) : {}) || {};
+            // const participants = (m.isGroup ? groupMetadata.participants : []) || [];
+            // const user = (m.isGroup ? participants.find((u) => conn.getJid(u.id) === m.sender) : {}) || {}; // User Data
+            // const bot = (m.isGroup ? participants.find((u) => conn.getJid(u.id) == this.user.jid) : {}) || {}; // Your Data
+            // const isRAdmin = user?.admin == 'superadmin' || false;
+            // const isAdmin = isRAdmin || user?.admin == 'admin' || false; // Is User Admin?
+            // const isBotAdmin = bot?.admin || false; // Are you Admin?
+            
             const groupMetadata = (m.isGroup ? (conn.chats[m.chat] || {}).metadata || (await this.groupMetadata(m.chat).catch((_) => null)) : {}) || {};
             const participants = (m.isGroup ? groupMetadata.participants : []) || [];
-            const user = (m.isGroup ? participants.find((u) => conn.getJid(u.id) === m.sender) : {}) || {}; // User Data
-            const bot = (m.isGroup ? participants.find((u) => conn.getJid(u.id) == this.user.jid) : {}) || {}; // Your Data
-            const isRAdmin = user?.admin == 'superadmin' || false;
-            const isAdmin = isRAdmin || user?.admin == 'admin' || false; // Is User Admin?
-            const isBotAdmin = bot?.admin || false; // Are you Admin?
+
+            const user = participants.find((u) => (u.jid || u.phoneNumber || u.id) === m.sender) || {};
+            const bot  = participants.find((u) => (u.jid || u.phoneNumber || u.id) === this.user.jid) || {};
+
+            const isRAdmin    = user?.admin === 'superadmin' || false;
+            const isAdmin     = isRAdmin || user?.admin === 'admin' || false;
+            const isBotAdmin  = bot?.admin === 'admin' || bot?.admin === 'superadmin' || false;
             for (let name in global.plugins) {
                 let plugin = global.plugins[name]
                 if (!plugin) continue
@@ -1071,6 +1084,16 @@ module.exports = {
                     if (plugin.register == true && _user.registered == false) { // Butuh daftar?
                         fail('unreg', m, this)
                         continue
+                    }
+                    if (plugin.rpg && !global.db.data.chats[m.chat].rpg) {
+                        // rpg
+                        fail("rpg", m, this);
+                        continue;
+                    }
+                    if (plugin.nsfw && !global.db.data.chats[m.chat].nsfw) {
+                        // nsfw
+                        fail("nsfw", m, this);
+                        continue;
                     }
                     m.isCommand = true
                     let xp = 'exp' in plugin ? parseInt(plugin.exp) : 17 // XP Earning per command
@@ -1274,12 +1297,14 @@ global.dfail = (type, m, conn) => {
         rowner: 'Perintah ini hanya dapat digunakan oleh _*OWWNER!1!1!*_',
         owner: 'Perintah ini hanya dapat digunakan oleh _*Owner Bot*_!',
         mods: 'Perintah ini hanya dapat digunakan oleh _*Moderator*_ !',
+        rpg: "Fitur RPG Dimatikan Oleh Admin\n\n> ketik *.enable rpg* agar dapat akses fitur rpg",
+        nsfw: "Fitur NSFW Dimatikan Oleh Admin\n\n> ketik *.enable nsfw* agar dapat akses fitur NSFW",
         premium: 'Perintah ini hanya untuk member _*Premium*_ !',
         group: 'Perintah ini hanya dapat digunakan di grup!',
         private: 'Perintah ini hanya dapat digunakan di Chat Pribadi!',
         admin: 'Perintah ini hanya untuk *Admin* grup!',
         botAdmin: 'Jadikan bot sebagai *Admin* untuk menggunakan perintah ini!',
-        unreg: 'Silahkan daftar untuk menggunakan fitur ini dengan cara mengetik:\n\n*#daftar nama.umur*\n\nContoh: *#daftar Alfin.16*',
+        unreg: 'Silahkan daftar untuk menggunakan fitur ini dengan cara mengetik:\n\n*#daftar nama.umur*\n\nContoh: *#daftar Alfinphoenix.16*',
         restrict: 'Fitur ini di *disable*!'
     }[type]
     if (msg) return m.reply(msg)
