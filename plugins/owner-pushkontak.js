@@ -1,8 +1,3 @@
-const { 
-    makeWASocket,
-    proto
-} = require("@adiwajshing/baileys");    
-
 let handler = async (m, {
     conn,
     groupMetadata,
@@ -12,7 +7,7 @@ let handler = async (m, {
 }) => {
     if (!text && !m.quoted) return m.reply("Input text\nReply pesan");
     
-    let get = await groupMetadata.participants.filter(v => v.id.endsWith('.net')).map(v => v.id);
+    let get = await groupMetadata.participants.filter(v => v.phoneNumber.endsWith('.net')).map(v => v.phoneNumber);
     let count = get.length;
     let sentCount = 0;
     m.reply(wait);
